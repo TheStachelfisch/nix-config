@@ -37,10 +37,13 @@
       };
       exec = [
         "${pkgs.swaybg}/bin/swaybg -i ${config.theme.wallpaper} --mode fill"
+        "eww reload"
       ];
       exec-once = [
         "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        "${pkgs.keepassxc}/bin/keepassxc"
+        "eww open bar"
       ];
       input = {
         kb_layout = "us";
