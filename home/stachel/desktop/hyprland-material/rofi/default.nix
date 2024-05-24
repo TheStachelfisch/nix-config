@@ -3,6 +3,7 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
+    terminal = "${pkgs.foot}/bin/foot";
     # TODO: Replace with global font configurations
     font = "Roboto Flex Nerd Font 12";
   };
