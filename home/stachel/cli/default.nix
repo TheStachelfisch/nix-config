@@ -12,6 +12,5 @@
     socat
     jq
     python3
-    inotify-tools
   ];
 }
