@@ -1,0 +1,6 @@
+* {
+<* for name, value in colors *>
+{{name | replace: "_", "-"}}: {{value.default.hex}};
+<* endfor *>
+surface-alpha: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 80%);
+}

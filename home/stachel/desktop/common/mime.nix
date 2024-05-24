@@ -1,0 +1,6 @@
+{ ... }:
+{
+  xdg.mimeApps = {
+    enable = true;
+  };
+}

@@ -1,0 +1,3 @@
+{
+  theme = import ./theme.nix;
+}

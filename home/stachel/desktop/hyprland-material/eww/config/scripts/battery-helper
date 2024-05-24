@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+capacity=$(cat /sys/class/power_supply/BAT1/capacity)
+status=$(cat /sys/class/power_supply/BAT1/status)
+icon=""
+
+if ((capacity == 100)); then
+    case "$status" in
+        Discharging) icon="󰁹"
+            ;;
+        Charging) icon="󰂅"
+            ;;
+    esac
+elif ((capacity >= 90 && capacity < 100)); then
+    case "$status" in
+        Discharging) icon="󰂂"
+            ;;
+        Charging) icon="󰂋"
+            ;;
+    esac
+elif ((capacity >= 80 && capacity < 90)); then
+    case "$status" in
+        Discharging) icon="󰂁"
+            ;;
+        Charging) icon="󰂊"
+            ;;
+    esac
+elif ((capacity >= 70 && capacity < 80)); then
+    case "$status" in
+        Discharging) icon="󰂀"
+            ;;
+        Charging) icon="󰢞"
+            ;;
+    esac
+elif ((capacity >= 60 && capacity < 70)); then
+    case "$status" in
+        Discharging) icon="󰁿"
+            ;;
+        Charging) icon="󰂉"
+            ;;
+    esac
+elif ((capacity >= 50 && capacity < 60)); then
+    case "$status" in
+        Discharging) icon="󰁾"
+            ;;
+        Charging) icon="󰢝"
+            ;;
+    esac
+elif ((capacity >= 40 && capacity < 50)); then
+    case "$status" in
+        Discharging) icon="󰁽"
+            ;;
+        Charging) icon="󰂈"
+            ;;
+    esac
+elif ((capacity >= 30 && capacity < 40)); then
+    case "$status" in
+        Discharging) icon="󰁼"
+            ;;
+        Charging) icon="󰂇"
+            ;;
+    esac
+elif ((capacity >= 20 && capacity < 30)); then
+    case "$status" in
+        Discharging) icon="󰁻"
+            ;;
+        Charging) icon="󰂆"
+            ;;
+    esac
+elif ((capacity >= 10 && capacity < 20)); then
+    case "$status" in
+        Discharging) icon="󰁺"
+            ;;
+        Charging) icon="󰢜"
+            ;;
+    esac
+elif ((capacity >= 0 && capacity < 10)); then
+    case "$status" in
+        Discharging) icon="󱃍"
+            ;;
+        Charging) icon="󰢟"
+            ;;
+    esac
+
+fi 
+
+printf '{"capacity": "%d", "icon": "%s", "state": "%s"}' "$capacity" "$icon" "$status"
