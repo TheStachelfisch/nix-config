@@ -7,5 +7,6 @@
     ./loupe.nix
     ./firefox.nix
     ./keepassxc.nix
+    ./syncthing.nix
   ];
 }
