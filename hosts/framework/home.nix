@@ -10,7 +10,7 @@
 
   theme = {
     enable = true;
-    wallpaper = ./wallpapers/test.png;
+    wallpaper = ./wallpapers/blobs-d.svg;
     variant = "dark";
   };
 }
