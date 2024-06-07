@@ -6,6 +6,7 @@
     settings = {
       main = {
         pad = "5x5 center";
+        font = "monospace:size=8";
         selection-target = "clipboard";
       };
 
