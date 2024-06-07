@@ -8,5 +8,6 @@
     ./firefox.nix
     ./keepassxc.nix
     ./syncthing.nix
+    ./music.nix
   ];
 }
