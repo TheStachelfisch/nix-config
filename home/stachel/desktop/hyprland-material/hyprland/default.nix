@@ -30,13 +30,17 @@
       enable = true;
     };
     settings = {
+      monitor = [ 
+        ",highrr,auto,auto"
+      ];
+
       general = {
         border_size = 1;
         "col.active_border" = "rgba(${config.theme.colors.primary}88)";
         "col.inactive_border" = "rgba(00000000)";
       };
       exec = [
-        "${pkgs.swaybg}/bin/swaybg -i ${config.theme.wallpaper} --mode fill"
+        "${pkgs.wbg}/bin/wbg ${config.theme.wallpaper}"
         "eww reload"
       ];
       exec-once = [
