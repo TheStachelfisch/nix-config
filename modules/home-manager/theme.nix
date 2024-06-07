@@ -33,7 +33,7 @@ let
     export HOME=$(pwd)
     
     ${pkg}/bin/matugen \
-      image ${cfg.wallpaper} \
+      image ${cfg.convertedWallpaper} \
       ${
       if cfg.templates != {}
       then "--config ${matugenConfig}"
@@ -46,6 +46,11 @@ let
       > $out/theme.json
   '';
   colors = builtins.fromJSON (builtins.readFile "${themePackage}/theme.json");
+  convertedWallpaperCmd = pkgs.runCommandLocal "converted-wallpaper" {  } ''
+    mkdir -p $out
+    cd $out
+    ${pkgs.imagemagick}/bin/convert ${cfg.wallpaper} $out/wallpaper.png
+  '';
 in
 {
   options.theme = {
@@ -58,6 +63,13 @@ in
       defaultText = lib.literalExample ''
         "${pkgs.nixos-artwork.wallpapers.simple-blue}/share/backgrounds/nixos/nix-wallpaper-simple-blue.png"
       '';
+    };
+
+    convertedWallpaper = lib.mkOption {
+      description = "The wallpaper converted to png format";
+      type = lib.types.path;
+      default = "${convertedWallpaperCmd}/wallpaper.png";
+      readOnly = true;
     };
 
     templates = lib.mkOption {
