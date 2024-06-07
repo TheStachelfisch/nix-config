@@ -22,6 +22,7 @@ in
     bind =
       let
         terminal = "foot";
+        appLauncher = "rofi -show drun -theme launcher";
       in
       [
         # Basic compositor bindings
@@ -47,6 +48,7 @@ in
 
         # Apps and programs
         "$mod, G, exec, ${terminal}"
+        "$mod, M, exec, ${appLauncher}"
       ] ++ workspaces;
 
     # Mouse movements to resize windows and move them
