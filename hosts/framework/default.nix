@@ -10,22 +10,13 @@
 
       ../../system/optional/laptop
       ../../system/optional/wireless.nix
-      ../../system/optional/greetd.nix
       ../../system/optional/storagebox.nix
 
       ../../system/optional/desktop
       ../../system/optional/desktop/hyprland-material.nix
     ];
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   services.preload.enable = true;
-  security.polkit.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -43,10 +34,6 @@
   console = {
     font = "Lat2-Terminus16";
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = with pkgs; [ gutenprint ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
