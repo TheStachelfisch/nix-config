@@ -78,6 +78,7 @@
       env = [
         "XCURSOR_SIZE,${builtins.toString (config.home.pointerCursor.size)}"
         "XCURSOR_THEME,${config.home.pointerCursor.name}"
+        "NIXOS_OZONE_WL,1"
       ];
     };
   };
