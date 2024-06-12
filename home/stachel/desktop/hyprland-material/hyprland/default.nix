@@ -36,6 +36,8 @@
 
       general = {
         border_size = 1;
+        gaps_in = 5;
+        gaps_out = 10;
         "col.active_border" = "rgba(${config.theme.colors.primary}88)";
         "col.inactive_border" = "rgba(00000000)";
       };
