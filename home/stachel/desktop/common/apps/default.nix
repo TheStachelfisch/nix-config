@@ -9,5 +9,6 @@
     ./keepassxc.nix
     ./syncthing.nix
     ./music.nix
+    ./multimedia.nix
   ];
 }
