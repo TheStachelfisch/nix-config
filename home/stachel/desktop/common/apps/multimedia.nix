@@ -8,6 +8,7 @@
         ];
       };
     })
+    spotify
   ];
 
   home.file.".local/share/jellyfinmediaplayer/scripts/mpris.so" = {

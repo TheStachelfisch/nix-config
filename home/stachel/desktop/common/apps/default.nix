@@ -1,14 +1,11 @@
 { ... }:
 {
   imports = [
-    ./foot.nix
-    ./nautilus.nix
-    ./discord.nix
-    ./loupe.nix
-    ./firefox.nix
-    ./keepassxc.nix
-    ./syncthing.nix
-    ./music.nix
+    ./gaming.nix
     ./multimedia.nix
+    ./productivity.nix
+    ./social.nix
+
+    ./foot.nix
   ];
 }

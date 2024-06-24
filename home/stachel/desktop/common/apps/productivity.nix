@@ -1,6 +1,15 @@
-{ config, pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  home.packages = with pkgs; [ profile-sync-daemon ];
+  home.packages = with pkgs; [ gnome.nautilus gnome.weather simple-scan loupe ];
+
+  services.syncthing = {
+    enable = true;
+    tray = {
+      enable = true;
+      command = "syncthingtray --wait";
+    };
+  };
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-beta;
@@ -97,5 +106,8 @@
 
   services.psd = {
     enable = true;
+    browsers = [ "firefox" "chromium" ];
+    useBackup = false;
+    backupLimit = 10;
   };
 }
