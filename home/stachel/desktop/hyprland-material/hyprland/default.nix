@@ -36,8 +36,8 @@
 
       general = {
         border_size = 1;
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 3;
+        gaps_out = 6;
         "col.active_border" = "rgba(${config.theme.colors.primary}88)";
         "col.inactive_border" = "rgba(00000000)";
       };
@@ -56,7 +56,7 @@
         kb_variant = "colemak_dh";
       };
       decoration = {
-        rounding = 16;
+        rounding = 12;
         "col.shadow" = "rgba(${config.theme.colors.shadow}1a)";
         blur = {
           enabled = true;
