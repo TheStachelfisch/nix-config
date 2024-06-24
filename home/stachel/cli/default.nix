@@ -12,5 +12,6 @@
     socat
     jq
     python3
+    brightnessctl
   ];
 }
