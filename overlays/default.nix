@@ -5,15 +5,13 @@
   };
 
   modifications = final: prev: {
-    keepassxc = prev.keepassxc.overrideAttrs (oldAttrs: rec {
-      version = "2.7.8";
+    keepassxc = prev.keepassxc.overrideAttrs (oldAttrs: {
       src = prev.fetchFromGitHub {
         owner = "keepassxreboot";
-        repo = "keepassx";
-        rev = version;
-        hash = "sha256-Gb5/CPhn/phVVvz9BFv7rb12n/P3rPNl5r2gA+E5b0o=";
+        repo = "keepassxc";
+        rev = "f4b91c17a9bcaf465382ee8f10e08005dd97cbf9";
+        hash = "sha256-qexPsZwcTnHB6nminAc6P5xqde7yBi+DglzuwEZjzYM=";
       };
-
       buildInputs = oldAttrs.buildInputs ++ [ final.keyutils ];
     });
   }; 
