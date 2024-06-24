@@ -9,7 +9,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:thestachelfisch/home-manager/fix/psd";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
@@ -30,6 +30,9 @@
     zls.url = "github:zigtools/zls";
     zls.inputs.nixpkgs.follows = "nixpkgs";
     zls.inputs.zig-overlay.follows = "zig";
+
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, ... } @ inputs:

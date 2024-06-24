@@ -44,6 +44,7 @@
     nerdfonts
     jetbrains-mono
     google-fonts
+    inputs.apple-fonts.packages.${pkgs.system}.sf-pro
   ];
 
   programs.zsh.enable = true;
