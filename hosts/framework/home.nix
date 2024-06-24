@@ -17,7 +17,7 @@
 
   theme = {
     enable = true;
-    wallpaper = ./wallpapers/blobs-d.svg;
+    wallpaper = ./wallpapers/default-d.jpg;
     variant = "dark";
   };
 }
