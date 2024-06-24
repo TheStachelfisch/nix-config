@@ -62,9 +62,6 @@
           enabled = true;
           passes = 4;
           size = 12;
-          #contrast = 1;
-          #brightness = 1;
-          #noise = 0.03;
           new_optimizations = true;
         };
       };
