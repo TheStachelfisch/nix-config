@@ -7,6 +7,7 @@
 
   networking.wireless = {
     enable = true;
+    userControlled.enable = true;
     environmentFile = config.sops.secrets.wireless.path;
     networks = { 
       "@SSID_HOME@" = {
