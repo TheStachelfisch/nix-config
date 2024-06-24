@@ -51,6 +51,23 @@
     inputs.apple-fonts.packages.${pkgs.system}.sf-pro
   ];
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    extraPackages = with pkgs; [
+      mangohud
+    ];
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+    extest.enable = true;
+    gamescopeSession = {
+      enable = true;
+    };
+  };
+
   programs.zsh.enable = true;
   system.stateVersion = "24.05"; # Did you read the comment?
 }
