@@ -35,6 +35,10 @@
     font = "Lat2-Terminus16";
   };
 
+  environment.systemPackages = with pkgs; [
+    keepassxc
+  ];
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
