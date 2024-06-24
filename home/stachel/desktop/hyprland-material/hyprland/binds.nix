@@ -22,7 +22,7 @@ in
     bind =
       let
         terminal = "foot";
-        appLauncher = "rofi -show drun -theme launcher -matching fuzzy";
+        appLauncher = "rofi -show drun -theme spotlight -matching fuzzy -automatic-save-to-history";
       in
       [
         # Basic compositor bindings
