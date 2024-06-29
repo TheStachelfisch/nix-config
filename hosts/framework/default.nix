@@ -26,6 +26,7 @@
   };
 
   hardware.keyboard.qmk.enable = true;
+  hardware.xone.enable = true;
 
   networking.hostName = "framework"; # Define your hostname.
 
