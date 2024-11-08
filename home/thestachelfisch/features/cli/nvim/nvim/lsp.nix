@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.neovim = {
     extraPackages = with pkgs; [
       zls # ZIG language server
@@ -67,7 +66,7 @@
 
           local cmp = require('cmp')
           local luasnip = require('luasnip')
-      
+
           cmp.setup({
             snippet = {
               expand = function(args)
@@ -107,7 +106,7 @@
                   cmp.select_prev_item()
                 elseif luasnip.jumpable(-1) then
                   luasnip.jump(-1)
-                else 
+                else
                   fallback()
                 end
               end, { "i", "s" }),
@@ -144,5 +143,3 @@
     ];
   };
 }
-
-

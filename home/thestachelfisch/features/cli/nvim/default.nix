@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -7,18 +10,18 @@
     vimAlias = true;
     vimdiffAlias = true;
     extraPackages = with pkgs; [
-      gccgo14  
+      gccgo14
       ripgrep
 
       nil
       inputs.zls.packages.x86_64-linux.zls
       lua-language-server
-      nodejs_22 
+      nodejs_22
       typescript
       nodePackages_latest.typescript-language-server
       clang-tools
     ];
-    # extraConfig = '' 
+    # extraConfig = ''
     #   " Use system clipboard
     #   set clipboard+=unnamedplus
     #
@@ -46,5 +49,4 @@
     source = ./config;
     recursive = true;
   };
- }
-
+}

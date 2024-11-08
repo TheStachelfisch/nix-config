@@ -1,6 +1,8 @@
-{ lib, pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -29,7 +31,7 @@
       }
     ];
     localVariables = {
-      ZSH_AUTOSUGGEST_STRATEGY = [ "match_prev_cmd" "completion" ];
+      ZSH_AUTOSUGGEST_STRATEGY = ["match_prev_cmd" "completion"];
     };
   };
 }

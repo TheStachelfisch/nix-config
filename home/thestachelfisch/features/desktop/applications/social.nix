@@ -1,4 +1,3 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [ vesktop ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [vesktop];
 }

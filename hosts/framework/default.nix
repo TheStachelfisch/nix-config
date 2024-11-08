@@ -1,11 +1,14 @@
-{ pkgs, inputs, config, ... }:
-let
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}: let
   amdgpu-kernel-module = pkgs.callPackage ./amdgpu-kernel-module.nix {
     # Make sure the module targets the same kernel as your system is using.
     kernel = config.boot.kernelPackages.kernel;
   };
-in
-{
+in {
   imports = [
     # Hardware imports
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
@@ -36,7 +39,7 @@ in
   networking.hostName = "framework";
   services.fwupd.enable = true;
   services.libinput.enable = true;
-  
+
   environment.systemPackages = with pkgs; [
     keepassxc
   ];

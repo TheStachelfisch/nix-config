@@ -1,17 +1,21 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   services.gpg-agent = {
     enable = true;
     enableExtraSocket = true;
     pinentryPackage =
-      if config.gtk.enable 
+      if config.gtk.enable
       then pkgs.pinentry-gnome3
       else pkgs.pinentry-tty;
-    };
+  };
 
-   home.packages = lib.optional config.gtk.enable pkgs.gcr;
+  home.packages = lib.optional config.gtk.enable pkgs.gcr;
 
-    programs.gpg = {
-      enable = true;
-    };
+  programs.gpg = {
+    enable = true;
+  };
 }

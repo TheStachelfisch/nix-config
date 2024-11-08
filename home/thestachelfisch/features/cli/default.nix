@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./zsh
     ./nvim
@@ -11,6 +10,5 @@
 
   # Smaller CLI tools
   home.packages = with pkgs; [
-    
   ];
 }

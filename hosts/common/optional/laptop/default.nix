@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./upower.nix
     ./chrony.nix

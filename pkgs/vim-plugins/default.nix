@@ -1,4 +1,3 @@
-{ pkgs }:
-{
-  haste-nvim = pkgs.callPackage ./haste-nvim.nix { };
+{pkgs}: {
+  haste-nvim = pkgs.callPackage ./haste-nvim.nix {};
 }

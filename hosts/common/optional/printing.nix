@@ -1,7 +1,6 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ gutenprint ];
+    drivers = with pkgs; [gutenprint];
   };
 }

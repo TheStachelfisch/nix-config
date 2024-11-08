@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     git-credential-manager
   ];
@@ -15,7 +14,7 @@
       init.defaultbranch = "master";
       credential = {
         helper = "manager";
-        credentialStore = "secretservice";
+        credentialStore = "cache";
       };
     };
     lfs.enable = true;

@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   sops.secrets.wireless = {
     sopsFile = ../secrets.yaml;
     neededForUsers = true;
@@ -24,7 +23,7 @@
       powersave = true;
     };
     ensureProfiles = {
-      environmentFiles = [ config.sops.secrets.wireless.path ];
+      environmentFiles = [config.sops.secrets.wireless.path];
       profiles = {
         home-wifi = {
           connection = {
@@ -68,7 +67,7 @@
             addr-gen-mode = "default";
             method = "auto";
           };
-          proxy = { };
+          proxy = {};
           wifi = {
             mode = "infrastructure";
             ssid = "eduroam";

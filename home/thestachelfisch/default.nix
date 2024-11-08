@@ -1,4 +1,3 @@
-{ ... }:
-{
-  imports = [  ./global ];
+{...}: {
+  imports = [./global];
 }

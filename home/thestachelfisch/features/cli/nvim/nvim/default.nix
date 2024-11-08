@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./lsp.nix
     ./syntax.nix
@@ -13,7 +12,7 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraConfig = '' 
+    extraConfig = ''
       " Use system clipboard
       set clipboard+=unnamedplus
 

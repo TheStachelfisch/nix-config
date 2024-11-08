@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   services.upower = {
     enable = true;
     noPollBatteries = true;

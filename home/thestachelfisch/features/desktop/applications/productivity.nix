@@ -1,6 +1,9 @@
-{ pkgs, config, ... }:
 {
-  home.packages = with pkgs; [ gnome-calculator nautilus simple-scan loupe freecad-wayland obsidian jetbrains.datagrip jetbrains.idea-ultimate drawio figma-linux ];
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = with pkgs; [gnome-calculator nautilus simple-scan loupe freecad-wayland obsidian jetbrains.datagrip jetbrains.idea-ultimate drawio figma-linux];
 
   services.syncthing = {
     enable = true;
@@ -102,12 +105,15 @@
 
   home.file."firefox-macos-theme" = {
     target = ".mozilla/firefox/TheStachelfisch/chrome/firefox-macos-theme";
-    source = "${(fetchTarball { url="https://github.com/TheStachelfisch/WhiteSur-firefox-theme/archive/fix-no-buttons.tar.gz"; sha256="0rn9k3g1ivvnhgkszwq4z30dsxq8ivlamnn5fh7qpz7n8jw4gnfn"; }) }/src"; 
+    source = "${(fetchTarball {
+      url = "https://github.com/TheStachelfisch/WhiteSur-firefox-theme/archive/fix-no-buttons.tar.gz";
+      sha256 = "0rn9k3g1ivvnhgkszwq4z30dsxq8ivlamnn5fh7qpz7n8jw4gnfn";
+    })}/src";
   };
 
   services.psd = {
     enable = true;
-    browsers = [ "firefox" "chromium" ];
+    browsers = ["firefox" "chromium"];
     useBackup = false;
     backupLimit = 10;
   };

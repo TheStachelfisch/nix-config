@@ -1,8 +1,14 @@
-{ pkgs, config, lib, inputs, outputs, ... }:
 {
+  pkgs,
+  config,
+  lib,
+  inputs,
+  outputs,
+  ...
+}: {
   imports = [
     ../features/cli
-  ]; 
+  ];
   #++ (builtins.attrValues outputs.homeManagerModules);
 
   programs.home-manager.enable = true;

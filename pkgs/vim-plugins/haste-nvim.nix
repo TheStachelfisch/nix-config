@@ -1,5 +1,7 @@
-{ vimUtils, fetchFromGitHub }:
-
+{
+  vimUtils,
+  fetchFromGitHub,
+}:
 vimUtils.buildVimPlugin {
   name = "haste-nvim";
   src = fetchFromGitHub {
@@ -9,4 +11,3 @@ vimUtils.buildVimPlugin {
     sha256 = "sha256-pGzGyxid3SXwoUSGF4tC5BgfLUup6cMDnycnz1XxBYo=";
   };
 }
-

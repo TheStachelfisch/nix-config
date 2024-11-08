@@ -1,8 +1,11 @@
-{ pkgs, config, lib, ... }:
-let
-  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in {
   users.mutableUsers = false;
   users.users.thestachelfisch = {
     isNormalUser = true;
@@ -14,7 +17,7 @@ in
       "network"
     ];
 
-    openssh.authorizedKeys.keyFiles = [ ../../../../home/thestachelfisch/ssh.pub ];
+    openssh.authorizedKeys.keyFiles = [../../../../home/thestachelfisch/ssh.pub];
     hashedPasswordFile = config.sops.secrets.thestachelfisch-password.path;
   };
 
