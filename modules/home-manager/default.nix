@@ -1,3 +1,2 @@
-{
-  theme = import ./theme.nix;
-}
+{ ... }:
+{}
