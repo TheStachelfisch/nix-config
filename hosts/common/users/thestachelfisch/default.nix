@@ -18,6 +18,8 @@ in
     hashedPasswordFile = config.sops.secrets.thestachelfisch-password.path;
   };
 
+  programs.zsh.enable = true;
+
   sops.secrets.thestachelfisch-password = {
     sopsFile = ../../secrets.yaml;
     neededForUsers = true;

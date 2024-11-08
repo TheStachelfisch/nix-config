@@ -15,7 +15,6 @@
 
   wsl.enable = true;
   wsl.defaultUser = "thestachelfisch";
-  programs.zsh.enable = true;
   
   networking.hostName = "wsl";
   networking.firewall.enable = false;
