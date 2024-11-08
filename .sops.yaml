@@ -1,19 +1,21 @@
 keys:
   # Users
   - &users:
-    - &stachel BAD3CD149697F0C7B922824FACA965618087B276
+    - &thestachelfisch BAD3CD149697F0C7B922824FACA965618087B276
   # Hosts
   - &hosts:
     - &framework age1wl47l64jahksatswacx6sdyyc9g4r550g3qxp2605qt8ywtchv8sj04xu7
+    - &wsl age1nlmdz2mtggjfvjympge0pjhu4l7t0fjxyekxmtdetnsmvten2e9skglzl0
 
 creation_rules:
-  - path_regex: system/secrets.ya?ml$
+  - path_regex: hosts/common/secrets.ya?ml$
     key_groups:
     - age:
       - *framework
+      - *wsl
       pgp:
-      - *stachel
-  - path_regex: home/stachel/secrets.ya?ml$
+      - *thestachelfisch
+  - path_regex: home/thestachelfisch/secrets.ya?ml$
     key_groups:
     - pgp:
-      - *stachel
+      - *thestachelfisch
