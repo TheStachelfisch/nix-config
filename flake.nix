@@ -25,6 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # TODO: Add to dev shells only
     zig = {
@@ -79,6 +80,18 @@
           inherit inputs outputs;
         };
       };
+
+      # WSL Environment
+      wsl = lib.nixosSystem {
+        modules = [
+	  inputs.nixos-wsl.nixosModules.default
+	  inputs.nur.nixosModules.nur
+	  ./hosts/wsl
+        ];
+	specialArgs = {
+	  inherit inputs outputs;
+	};
+      };
     };
 
     homeConfigurations = {
@@ -89,6 +102,15 @@
           inputs.nur.nixosModules.nur
           ./hosts/framework/home.nix
         ];
+      };
+
+      "thestachelfisch@wsl" = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor.x86_64-linux;
+	extraSpecialArgs = {inherit inputs outputs;};
+	modules = [
+	  inputs.nur.nixosModules.nur
+	  ./hosts/wsl/home.nix
+	];
       };
     };
   };
