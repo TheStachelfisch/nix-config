@@ -1,8 +1,8 @@
-{ ... }:
+{ lib, ... }:
 {
   networking = {
     firewall = {
-      enable = true;
+      enable = lib.mkDefault true;
       pingLimit = "2/second";
     };
     nftables = {
