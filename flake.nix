@@ -84,13 +84,23 @@
       # WSL Environment
       wsl = lib.nixosSystem {
         modules = [
-	  inputs.nixos-wsl.nixosModules.default
-	  inputs.nur.nixosModules.nur
-	  ./hosts/wsl
+          inputs.nixos-wsl.nixosModules.default
+          inputs.nur.nixosModules.nur
+          ./hosts/wsl
         ];
-	specialArgs = {
-	  inherit inputs outputs;
-	};
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
+      # ARM Server no. 1
+      malachite = lib.nixosSystem {
+        modules = [
+          ./hosts/malachite
+        ];
+        specialArgs = {
+          inherit inputs outputs;
+        };
       };
     };
 
@@ -106,11 +116,11 @@
 
       "thestachelfisch@wsl" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-	extraSpecialArgs = {inherit inputs outputs;};
-	modules = [
-	  inputs.nur.nixosModules.nur
-	  ./hosts/wsl/home.nix
-	];
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          inputs.nur.nixosModules.nur
+          ./hosts/wsl/home.nix
+        ];
       };
     };
   };

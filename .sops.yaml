@@ -6,6 +6,7 @@ keys:
   - &hosts:
     - &framework age1wl47l64jahksatswacx6sdyyc9g4r550g3qxp2605qt8ywtchv8sj04xu7
     - &wsl age1nlmdz2mtggjfvjympge0pjhu4l7t0fjxyekxmtdetnsmvten2e9skglzl0
+    - &malachite age16c4wm8k748r27scq68kl596gvsz0spzf3pnm66kdltn8qxp9rershvdds8
 
 creation_rules:
   - path_regex: hosts/common/secrets.ya?ml$
@@ -13,6 +14,7 @@ creation_rules:
     - age:
       - *framework
       - *wsl
+      - *malachite
       pgp:
       - *thestachelfisch
   - path_regex: home/thestachelfisch/secrets.ya?ml$
