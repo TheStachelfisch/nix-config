@@ -119,6 +119,7 @@
     # Set only for systems that are remotely-deployed to
     colmena = {
       meta = {
+        description = "Remote Machines Managed exclusively remotely";
         nixpkgs = pkgsFor.x86_64-linux;
 
         specialArgs = {
@@ -131,6 +132,8 @@
           targetHost = "malachite.thestachelfisch.dev";
           targetUser = "thestachelfisch";
           buildOnTarget = true;
+
+          tags = [ "arm" "oci" ];
         };
 
         imports = [
