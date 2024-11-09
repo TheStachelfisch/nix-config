@@ -26,7 +26,6 @@
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    nixinate.url = "github:matthewcroughan/nixinate";
 
     # TODO: Add to dev shells only
     zig = {
@@ -45,7 +44,6 @@
     nixpkgs,
     home-manager,
     systems,
-    nixinate,
     hyprland,
     ...
   } @ inputs: let
@@ -64,7 +62,6 @@
     inherit lib;
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
-    apps = nixinate.nixinate.x86_64-linux self;
 
     overlays = import ./overlays {inherit inputs outputs;};
 
@@ -92,25 +89,6 @@
           inputs.nixos-wsl.nixosModules.default
           inputs.nur.nixosModules.nur
           ./hosts/wsl
-        ];
-        specialArgs = {
-          inherit inputs outputs;
-        };
-      };
-
-      # ARM Server no. 1
-      malachite = lib.nixosSystem {
-        modules = [
-          ./hosts/malachite
-          {
-            _module.args.nixinate = {
-              host = "malachite.thestachelfisch.dev";
-              sshUser = "thestachelfisch";
-              buildOn = "remote";
-              substituteOnTarget = true;
-              hermetic = false;
-            };
-          }
         ];
         specialArgs = {
           inherit inputs outputs;
