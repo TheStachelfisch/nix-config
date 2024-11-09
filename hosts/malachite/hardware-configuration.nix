@@ -8,6 +8,7 @@
     efiSupport = true;
     efiInstallAsRemovable = true;
     device = "nodev";
+    configurationLimit = 1;
   };
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/A552-E981";
