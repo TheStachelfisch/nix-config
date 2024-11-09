@@ -2,12 +2,19 @@
   inputs,
   outputs,
 }: {
+  # Adds pkgs.stable as an option
+  stable = final: _: {
+    stable = inputs.nixpkgs-stable.legacyPackages.${final.system};
+  };
+
+  # Adds additional custom packages
   additions = final: prev:
     import ../pkgs {pkgs = final;}
     // {
       vimPlugins = prev.vimPlugins // final.callPackage ../pkgs/vim-plugins {};
     };
 
+  # Modifies existing packages
   modifications = final: prev: {
     keepassxc = prev.keepassxc.overrideAttrs (oldAttrs: {
       src = prev.fetchFromGitHub {
