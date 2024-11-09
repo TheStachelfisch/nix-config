@@ -26,6 +26,7 @@
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixinate.url = "github:matthewcroughan/nixinate";
 
     # TODO: Add to dev shells only
     zig = {
@@ -44,6 +45,7 @@
     nixpkgs,
     home-manager,
     systems,
+    nixinate,
     hyprland,
     ...
   } @ inputs: let
@@ -62,6 +64,7 @@
     inherit lib;
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
+    apps = nixinate.nixinate.x86_64-linux self;
 
     overlays = import ./overlays {inherit inputs outputs;};
 
@@ -69,6 +72,8 @@
     devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
+    ## NixOS Configurations
+    # Set for every system
     nixosConfigurations = {
       #Framework Laptop
       framework = lib.nixosSystem {
@@ -97,6 +102,15 @@
       malachite = lib.nixosSystem {
         modules = [
           ./hosts/malachite
+          {
+            _module.args.nixinate = {
+              host = "malachite.thestachelfisch.dev";
+              sshUser = "thestachelfisch";
+              buildOn = "remote";
+              substituteOnTarget = true;
+              hermetic = false;
+            };
+          }
         ];
         specialArgs = {
           inherit inputs outputs;
@@ -104,6 +118,8 @@
       };
     };
 
+    ## Home-Manager Configurations
+    # Set only for systems that are interacted with manually
     homeConfigurations = {
       "thestachelfisch@framework" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
@@ -117,9 +133,30 @@
       "thestachelfisch@wsl" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          inputs.nur.nixosModules.nur
-          ./hosts/wsl/home.nix
+        modules = [ ./hosts/wsl/home.nix ];
+      };
+    };
+
+    ## Remote Servers
+    # Set only for systems that are remotely-deployed to
+    colmena = {
+      meta = {
+        nixpkgs = pkgsFor.x86_64-linux;
+
+        specialArgs = {
+            inherit inputs outputs;
+        };
+      };
+
+      malachite = { 
+        deployment = {
+          targetHost = "malachite.thestachelfisch.dev";
+          targetUser = "thestachelfisch";
+          buildOnTarget = true;
+        };
+
+        imports = [
+          ./hosts/malachite
         ];
       };
     };
