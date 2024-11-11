@@ -4,22 +4,23 @@
     neededForUsers = true;
   };
 
-  networking.wireless.iwd = {
-    enable = true;
-    settings = {
-      IPv6 = {
-        Enabled = true;
-      };
-      Settings = {
-        AutoConnect = true;
-      };
-    };
-  };
+  # Doesn't work as reliably as wpa_supplicant
+  # networking.wireless.iwd = {
+  #   enable = true;
+  #   settings = {
+  #     IPv6 = {
+  #       Enabled = true;
+  #     };
+  #     Settings = {
+  #       AutoConnect = true;
+  #     };
+  #   };
+  # };
 
   networking.networkmanager = {
     enable = true;
     wifi = {
-      backend = "iwd";
+      backend = "wpa_supplicant";
       powersave = true;
     };
     ensureProfiles = {
