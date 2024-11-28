@@ -10,5 +10,5 @@
   services.displayManager.sddm.enableHidpi = true;
   services.desktopManager.plasma6.enable = true;
 
-  security.pam.services.kde.fprintAuth = false;
+  programs.dconf.enable = true;
 }
