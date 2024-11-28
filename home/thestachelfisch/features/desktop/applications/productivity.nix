@@ -3,7 +3,28 @@
   config,
   ...
 }: {
-  home.packages = with pkgs; [gnome-calculator nautilus simple-scan loupe freecad-wayland obsidian jetbrains.datagrip jetbrains.idea-ultimate drawio figma-linux];
+  home.packages = with pkgs; [
+    gnome-calculator
+    nautilus 
+    simple-scan 
+    loupe 
+    freecad-wayland 
+    obsidian 
+    jetbrains.datagrip 
+    jetbrains.idea-ultimate
+    drawio
+    figma-linux
+    (pkgs.citrix_workspace.override {
+      libvorbis = pkgs.libvorbis.override {
+        libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
+          cmakeFlags = (prevAttrs.cmakeFlags or []) ++ [
+            (lib.cmakeBool "BUILD_SHARED_LIBS" true)
+          ];
+        });
+      };
+      extraCerts = [ ../../../../../hosts/common/global/certificates/SectigoRSADomainValidationSecureServerCA.crt ];
+    })
+  ];
 
   services.syncthing = {
     enable = true;
