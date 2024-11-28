@@ -23,7 +23,6 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
