@@ -14,6 +14,12 @@
     systems.url = "github:nix-systems/default-linux";
     nur.url = "github:nix-community/NUR";
 
+    # Tools
+    colmena = {
+      url = "github:zhaofengli/colmena/direct-flake-eval";
+      inputs.stable.follows = "nixpkgs-stable";
+    };
+
     # Services
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     home-manager = {
@@ -44,6 +50,7 @@
     home-manager,
     systems,
     hyprland,
+    colmena,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -116,6 +123,8 @@
 
     ## Remote Servers
     # Set only for systems that are remotely-deployed to
+    colmenaHive = colmena.lib.makeHive self.outputs.colmena;
+
     colmena = {
       meta = {
         description = "Remote Machines Managed exclusively remotely";
