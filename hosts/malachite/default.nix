@@ -3,6 +3,9 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/users/thestachelfisch
+    ../common/optional/server
+
+    ./services
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
