@@ -14,6 +14,10 @@
     ../common/users/thestachelfisch
   ];
 
+  environment.systemPackages = with pkgs; [
+    inputs.colmena.colmena
+  ];
+
   wsl.enable = true;
   wsl.defaultUser = "thestachelfisch";
 
