@@ -48,9 +48,11 @@
     self,
     nixpkgs,
     home-manager,
+    nur,
     systems,
     hyprland,
     colmena,
+    nixos-wsl,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -81,7 +83,7 @@
       #Framework Laptop
       framework = lib.nixosSystem {
         modules = [
-          inputs.nur.nixosModules.nur
+          nur.nixosModules.nur
           ./hosts/framework
         ];
         specialArgs = {
@@ -92,8 +94,8 @@
       # WSL Environment
       wsl = lib.nixosSystem {
         modules = [
-          inputs.nixos-wsl.nixosModules.default
-          inputs.nur.nixosModules.nur
+          nixos-wsl.nixosModules.default
+          nur.nixosModules.nur
           ./hosts/wsl
         ];
         specialArgs = {
