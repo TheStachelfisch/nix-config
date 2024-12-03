@@ -36,13 +36,17 @@ in {
   # TODO: Move to dedicated option for gaming peripherals
   hardware.xone.enable = true;
 
+  programs.nix-ld.enable = true;
+
   networking.hostName = "framework";
   services.fwupd.enable = true;
   services.libinput.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    keepassxc
+  environment.systemPackages = [
+    pkgs.keepassxc
+    config.nur.repos.ataraxiasjel.waydroid-script
   ];
+  virtualisation.waydroid.enable = true;
 
   programs.steam = {
     enable = true;
