@@ -13,7 +13,7 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    configPackages = with pkgs; [ xdg-desktop-portal-kde ];
+    configPackages = with pkgs; [xdg-desktop-portal-kde];
     extraPortals = with pkgs; [
       xdg-desktop-portal-kde
       xdg-desktop-portal-gnome

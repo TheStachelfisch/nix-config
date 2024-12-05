@@ -45,6 +45,7 @@ in {
   environment.systemPackages = [
     pkgs.keepassxc
     config.nur.repos.ataraxiasjel.waydroid-script
+    pkgs.inputs.colmena.colmena
   ];
   virtualisation.waydroid.enable = true;
 

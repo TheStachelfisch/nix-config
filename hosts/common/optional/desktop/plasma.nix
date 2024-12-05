@@ -13,5 +13,5 @@
   programs.dconf.enable = true;
 
   services.colord.enable = true;
-  environment.systemPackages = with pkgs; [ kdePackages.colord-kde ];
+  environment.systemPackages = with pkgs; [kdePackages.colord-kde];
 }

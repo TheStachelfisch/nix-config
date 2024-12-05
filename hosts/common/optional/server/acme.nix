@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   security.acme = {
     acceptTerms = true;
     defaults.email = "me@thestachelfisch.dev";
@@ -10,5 +9,5 @@
 
   sops.secrets.cloudflare = {
     sopsFile = ../../secrets.yaml;
-   };
+  };
 }

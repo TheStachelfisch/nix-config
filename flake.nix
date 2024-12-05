@@ -119,7 +119,7 @@
       "thestachelfisch@wsl" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./hosts/wsl/home.nix ];
+        modules = [./hosts/wsl/home.nix];
       };
     };
 
@@ -133,17 +133,17 @@
         nixpkgs = pkgsFor.x86_64-linux;
 
         specialArgs = {
-            inherit inputs outputs;
+          inherit inputs outputs;
         };
       };
 
-      malachite = { 
+      malachite = {
         deployment = {
           targetHost = "malachite.thestachelfisch.dev";
           targetUser = "thestachelfisch";
           buildOnTarget = true;
 
-          tags = [ "arm" "oci" ];
+          tags = ["arm" "oci"];
         };
 
         imports = [

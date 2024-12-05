@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
@@ -30,9 +29,9 @@
 
       extraConfig = ''
         error_page 404 /404.html;
-      '';  
+      '';
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [80 443];
 }
