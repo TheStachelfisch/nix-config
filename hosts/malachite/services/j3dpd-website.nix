@@ -1,4 +1,8 @@
 {...}: {
+  imports = [
+    ../../common/optional/server/certs/j3dpd-com.nix
+  ];
+
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
