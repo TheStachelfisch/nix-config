@@ -14,6 +14,7 @@
     jetbrains.idea-ultimate
     drawio
     figma-linux
+    zotero
     (pkgs.citrix_workspace.override {
       libvorbis = pkgs.libvorbis.override {
         libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
