@@ -5,10 +5,6 @@
 
   services.nginx = {
     enable = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
 
     virtualHosts."j3dpd.com" = {
       serverName = "j3dpd.com www.j3dpd.com";
