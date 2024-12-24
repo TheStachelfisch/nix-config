@@ -15,6 +15,7 @@
     drawio
     figma-linux
     zotero
+    qgis
     (pkgs.citrix_workspace.override {
       libvorbis = pkgs.libvorbis.override {
         libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
@@ -34,6 +35,7 @@
     tray = {
       enable = true;
       package = pkgs.syncthingtray;
+      command = "syncthingtray --wait";
     };
   };
 
@@ -52,6 +54,7 @@
         enhancer-for-youtube
         fastforwardteam
         sponsorblock
+        zotero-connector
       ];
       settings = {
         "browser.startup.page" = 3;
