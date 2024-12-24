@@ -4,6 +4,7 @@
     ../common/global
     ../common/users/thestachelfisch
     ../common/optional/server
+    ../common/optional/server/mass-storage.nix
 
     ./services
   ];
