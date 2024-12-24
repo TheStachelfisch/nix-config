@@ -49,6 +49,12 @@ in {
   ];
   virtualisation.waydroid.enable = true;
 
+  services.xserver.xkb.extraLayouts."EurKEY-Colemak" = {
+    symbolsFile = ./EurKeyXKB;
+    languages = ["eng" "ger"];
+    description = "EurKEY Colemak layout";
+  };
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
