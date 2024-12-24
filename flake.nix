@@ -83,7 +83,7 @@
       #Framework Laptop
       framework = lib.nixosSystem {
         modules = [
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           ./hosts/framework
         ];
         specialArgs = {
@@ -95,7 +95,7 @@
       wsl = lib.nixosSystem {
         modules = [
           nixos-wsl.nixosModules.default
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           ./hosts/wsl
         ];
         specialArgs = {
