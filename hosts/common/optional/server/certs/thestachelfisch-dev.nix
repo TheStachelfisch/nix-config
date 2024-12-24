@@ -4,8 +4,8 @@
   ];
 
   security.acme = {
-    certs."thestachelfisch.com" = {
-      extraDomainNames = ["*.thestachelfisch.com"];
+    certs."thestachelfisch.dev" = {
+      extraDomainNames = ["*.thestachelfisch.dev"];
       group = "nginx";
     };
   };
