@@ -12,7 +12,6 @@
   imports = [
     ../common/global
     ../common/users/thestachelfisch
-    ../common/optional/server/mass-storage.nix
   ];
 
   environment.systemPackages = with pkgs; [
