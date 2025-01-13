@@ -10,6 +10,10 @@ in {
   imports = [inputs.sops-nix.nixosModules.sops];
 
   sops = {
-    age.sshKeyPaths = map getKeyPath keys;
+    age = {
+      sshKeyPaths = map getKeyPath keys;
+      keyFile = "/var/lib/sops-nix/key.txt";
+      generateKey = true;
+    };
   };
 }

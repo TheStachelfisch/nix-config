@@ -5,7 +5,7 @@ keys:
   # Hosts
   - &hosts:
     - &framework age1wl47l64jahksatswacx6sdyyc9g4r550g3qxp2605qt8ywtchv8sj04xu7
-    - &wsl age1nlmdz2mtggjfvjympge0pjhu4l7t0fjxyekxmtdetnsmvten2e9skglzl0
+    - &wsl age18cqhxtw6z7v4dap54swa66pvwep2wk32z30f5nfqzl74uxcmp4rslkkn5e
     - &malachite age1wgwxysjvqucy0a94aslwjpshftqagv66xjj0u0hx340ns2sjeevs70s2my
 
 creation_rules:
