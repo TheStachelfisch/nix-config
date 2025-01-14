@@ -111,7 +111,7 @@
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          inputs.nur.nixosModules.nur
+          nur.modules.homeManager.default
           ./hosts/framework/home.nix
         ];
       };
