@@ -4,8 +4,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # cemu
-    # dolphin-emu
-    # config.nur.repos.aprilthepink.suyu-mainline
+    cemu
+    dolphin-emu
+    pkgs.nur.repos.aprilthepink.suyu-mainline
   ];
 }
