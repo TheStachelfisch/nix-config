@@ -15,6 +15,7 @@ in {
       "audio"
       "video"
       "network"
+      "plugdev"
     ];
 
     openssh.authorizedKeys.keyFiles = [../../../../home/thestachelfisch/ssh.pub];
