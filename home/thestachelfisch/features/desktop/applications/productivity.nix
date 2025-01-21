@@ -15,7 +15,8 @@
     drawio
     figma-linux
     zotero
-    qgis
+    zoom-us
+    # qgis
     (pkgs.citrix_workspace.override {
       libvorbis = pkgs.libvorbis.override {
         libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
@@ -39,13 +40,23 @@
     };
   };
 
+  programs.thunderbird = {
+    enable = true;
+    package = pkgs.thunderbird-latest-unwrapped;
+    profiles = {
+      "Ben" = {
+        isDefault = true;
+      };
+    };
+  };
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-beta;
     profiles.TheStachelfisch = {
       id = 0;
       bookmarks = {};
-      extensions = with config.nur.repos.rycee.firefox-addons; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         keepassxc-browser
         clearurls
