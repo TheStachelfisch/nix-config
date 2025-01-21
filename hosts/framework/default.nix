@@ -42,10 +42,11 @@ in {
   services.fwupd.enable = true;
   services.libinput.enable = true;
 
-  environment.systemPackages = [
-    pkgs.keepassxc
-    config.nur.repos.ataraxiasjel.waydroid-script
-    pkgs.inputs.colmena.colmena
+  environment.systemPackages = with pkgs; [
+    keepassxc
+    nur.repos.ataraxiasjel.waydroid-script
+    inputs.colmena
+    wineWowPackages.waylandFull
   ];
   virtualisation.waydroid.enable = true;
 
