@@ -23,7 +23,7 @@
     # Services
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     home-manager = {
-      url = "github:thestachelfisch/home-manager/fix/psd";
+      url = "github:thestachelfisch/home-manager/psd-upstream";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
