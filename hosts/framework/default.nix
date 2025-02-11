@@ -3,12 +3,8 @@
   inputs,
   config,
   ...
-}: let
-  amdgpu-kernel-module = pkgs.callPackage ./amdgpu-kernel-module.nix {
-    # Make sure the module targets the same kernel as your system is using.
-    kernel = config.boot.kernelPackages.kernel;
-  };
-in {
+}:
+{
   imports = [
     # Hardware imports
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
@@ -27,11 +23,6 @@ in {
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.extraModulePackages = [
-  #   (amdgpu-kernel-module.overrideAttrs (_: {
-  #     patches = [ ./playback1.patch ./playback2.patch];
-  #   })
-  # )];
 
   # TODO: Move to dedicated option for gaming peripherals
   hardware.xone.enable = true;
