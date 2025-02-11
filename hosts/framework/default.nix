@@ -19,7 +19,8 @@
     ../common/optional/wireless.nix
     ../common/optional/storagebox.nix
 
-    ../common/optional/desktop/plasma.nix
+    # ../common/optional/desktop/plasma.nix
+    ../common/optional/desktop/gnome.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
