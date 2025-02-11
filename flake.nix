@@ -26,6 +26,11 @@
       url = "github:thestachelfisch/home-manager/psd-upstream";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    }; 
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +53,7 @@
     self,
     nixpkgs,
     home-manager,
+    plasma-manager,
     nur,
     systems,
     hyprland,
@@ -112,6 +118,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           nur.modules.homeManager.default
+          plasma-manager.homeManagerModules.plasma-manager
           ./hosts/framework/home.nix
         ];
       };
