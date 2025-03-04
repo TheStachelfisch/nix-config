@@ -164,6 +164,22 @@
           ./hosts/malachite
         ];
       };
+
+      # Voron 2.4 3d-printer
+      printy = {
+        deployment = {
+          targetHost = "printy.thestachelfisch.dev";
+          targetUser = "thestachelfisch";
+          targetPort = 23;
+          buildOnTarget = false;
+
+          tags = ["arm" "home"];
+        };
+
+        imports = [
+            ./hosts/printy
+        ];
+      };
     };
   };
 }
