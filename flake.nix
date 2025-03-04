@@ -20,10 +20,15 @@
       inputs.stable.follows = "nixpkgs-stable";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Services
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     home-manager = {
-      url = "github:thestachelfisch/home-manager/psd-upstream";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     plasma-manager = {
@@ -59,6 +64,7 @@
     hyprland,
     colmena,
     nixos-wsl,
+    nix-index-database,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -118,6 +124,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           nur.modules.homeManager.default
+          nix-index-database.hmModules.nix-index
           plasma-manager.homeManagerModules.plasma-manager
           ./hosts/framework/home.nix
         ];

@@ -11,4 +11,6 @@
   # Smaller CLI tools
   home.packages = with pkgs; [
   ];
+
+  programs.nix-index.enable = true;
 }
