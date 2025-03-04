@@ -16,6 +16,8 @@ in {
       "video"
       "network"
       "plugdev"
+      "libvirtd"
+      "kvm"
     ];
 
     openssh.authorizedKeys.keyFiles = [../../../../home/thestachelfisch/ssh.pub];

@@ -18,6 +18,7 @@
     ../common/optional/laptop
     ../common/optional/wireless.nix
     ../common/optional/storagebox.nix
+    ../common/optional/full-system-virtualization.nix
 
     # ../common/optional/desktop/plasma.nix
     ../common/optional/desktop/gnome.nix
@@ -27,6 +28,8 @@
 
   # TODO: Move to dedicated option for gaming peripherals
   hardware.xone.enable = true;
+
+  hardware.framework.enableKmod = true;
 
   programs.nix-ld.enable = true;
 
@@ -64,6 +67,9 @@
       enable = true;
     };
   };
+
+  # Windows 10 virsual machine shared folder
+  services.spice-webdavd.enable = true;
 
   system.stateVersion = "24.05";
 }
