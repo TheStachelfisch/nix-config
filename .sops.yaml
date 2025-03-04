@@ -4,7 +4,7 @@ keys:
     - &thestachelfisch BAD3CD149697F0C7B922824FACA965618087B276
   # Hosts
   - &hosts:
-    - &framework age1wl47l64jahksatswacx6sdyyc9g4r550g3qxp2605qt8ywtchv8sj04xu7
+    - &framework age16uzpcjqa8mhqfcufzsq8gf66e9l34rv6dslt7s2r7h5td5d34eqq5nzuwd
     - &wsl age18cqhxtw6z7v4dap54swa66pvwep2wk32z30f5nfqzl74uxcmp4rslkkn5e
     - &malachite age1wgwxysjvqucy0a94aslwjpshftqagv66xjj0u0hx340ns2sjeevs70s2my
 
