@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ../sound.nix
@@ -9,5 +9,23 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-software
+    gnome-connections
+
+    epiphany # Gnome web
+    geary # Mail viewer
+    totem # Standard video player
+    yelp  # Help software
+    evince # Standard document viewer
+  ];
+
+  services.udev.packages = [ pkgs.gnome-settings-daemon ];
   programs.dconf.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
+  # If the desktop is unlocked using fprintd, then the login process hangs for a bit as the keyring can't be unlocked initially using the fingerprint
+  security.pam.services.gdm.enableGnomeKeyring = !config.services.fprintd.enable;
 }
