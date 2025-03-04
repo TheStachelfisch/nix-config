@@ -5,6 +5,6 @@
     ./social.nix
     ./gaming.nix
 
-    ./foot.nix
+    # ./foot.nix Remove soon
   ];
 }
