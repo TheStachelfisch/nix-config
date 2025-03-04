@@ -4,6 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    easyeffects
     gnome-calculator
     nautilus
     simple-scan
@@ -11,23 +12,25 @@
     freecad-wayland
     obsidian
     jetbrains.datagrip
-    jetbrains.idea-ultimate
+    # jetbrains.idea-ultimate
     drawio
     figma-linux
     zotero
     zoom-us
-    # qgis
+    qgis
+    papers
+    dialect
     (pkgs.citrix_workspace.override {
-      libvorbis = pkgs.libvorbis.override {
-        libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
-          cmakeFlags =
-            (prevAttrs.cmakeFlags or [])
-            ++ [
-              (lib.cmakeBool "BUILD_SHARED_LIBS" true)
-            ];
-        });
-      };
-      extraCerts = [../../../../../hosts/common/global/certificates/SectigoRSADomainValidationSecureServerCA.crt];
+     libvorbis = pkgs.libvorbis.override {
+       libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
+         cmakeFlags =
+           (prevAttrs.cmakeFlags or [])
+           ++ [
+             (lib.cmakeBool "BUILD_SHARED_LIBS" true)
+           ];
+       });
+     };
+     extraCerts = [../../../../../hosts/common/global/certificates/SectigoRSADomainValidationSecureServerCA.crt];
     })
   ];
 
@@ -56,7 +59,7 @@
     profiles.TheStachelfisch = {
       id = 0;
       bookmarks = {};
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         keepassxc-browser
         clearurls
@@ -141,13 +144,13 @@
     };
   };
 
-  home.file."firefox-macos-theme" = {
-    target = ".mozilla/firefox/TheStachelfisch/chrome/firefox-macos-theme";
-    source = "${(fetchTarball {
-      url = "https://github.com/TheStachelfisch/WhiteSur-firefox-theme/archive/fix-no-buttons.tar.gz";
-      sha256 = "0rn9k3g1ivvnhgkszwq4z30dsxq8ivlamnn5fh7qpz7n8jw4gnfn";
-    })}/src";
-  };
+  # home.file."firefox-macos-theme" = {
+  #   target = ".mozilla/firefox/TheStachelfisch/chrome/firefox-macos-theme";
+  #   source = "${(fetchTarball {
+  #     url = "https://github.com/TheStachelfisch/WhiteSur-firefox-theme/archive/fix-no-buttons.tar.gz";
+  #     sha256 = "0rn9k3g1ivvnhgkszwq4z30dsxq8ivlamnn5fh7qpz7n8jw4gnfn";
+  #   })}/src";
+  # };
 
   services.psd = {
     enable = true;
