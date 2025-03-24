@@ -6,7 +6,7 @@
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM= "wayland";
+    QT_QPA_PLATFORM = "wayland";
   };
 
   systemd.user.targets.tray = {
@@ -39,7 +39,7 @@
     enable = true;
     settings = {
       "org/gnome/mutter" = {
-        experimental-features = [ "variable-refresh-rate" "scale-monitor-framebuffer" "xwayland-native-scaling" "autoclose-xwayland" "kms-modifiers" ];
+        experimental-features = [ "variable-refresh-rate" "scale-monitor-framebuffer" "xwayland-native-scaling" "autoclose-xwayland" ];
       };
 
       "org/gnome/shell" = {
