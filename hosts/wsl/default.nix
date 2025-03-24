@@ -24,6 +24,7 @@
   networking.hostName = "wsl";
   networking.firewall.enable = false;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
