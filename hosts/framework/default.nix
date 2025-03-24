@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
 }:
 {
@@ -40,8 +41,10 @@
   environment.systemPackages = with pkgs; [
     keepassxc
     nur.repos.ataraxiasjel.waydroid-script
-    inputs.colmena
     wineWowPackages.waylandFull
+
+    pkgs.inputs.colmena.colmena
+    # inputs.colmena.packages.x86_64-linux.colmena
   ];
   virtualisation.waydroid.enable = true;
 
@@ -70,6 +73,24 @@
 
   # Windows 10 virsual machine shared folder
   services.spice-webdavd.enable = true;
+
+  services.postgresql = {
+    enable = true;
+    authentication = ''
+      local all all trust
+      host all all 0.0.0.0/0 trust
+    '';
+    ensureUsers = [
+      { 
+        name = "postgres";
+        ensureClauses = {
+          superuser = true;
+        };
+      }
+    ];
+  };
+
+  systemd.services.postgresql.wantedBy = lib.mkForce [];
 
   system.stateVersion = "24.05";
 }
