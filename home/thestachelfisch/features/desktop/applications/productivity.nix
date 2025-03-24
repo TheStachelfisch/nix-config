@@ -12,7 +12,8 @@
     freecad-wayland
     obsidian
     jetbrains.datagrip
-    # jetbrains.idea-ultimate
+    jetbrains.pycharm-professional
+    jetbrains.idea-ultimate
     drawio
     figma-linux
     zotero
@@ -20,6 +21,7 @@
     qgis
     papers
     dialect
+    libreoffice-qt6-fresh
     (pkgs.citrix_workspace.override {
      libvorbis = pkgs.libvorbis.override {
        libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
