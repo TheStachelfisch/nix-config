@@ -13,4 +13,9 @@
   ];
 
   programs.nix-index.enable = true;
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/thestachelfisch/Documents/nix-config";
+  };
 }
