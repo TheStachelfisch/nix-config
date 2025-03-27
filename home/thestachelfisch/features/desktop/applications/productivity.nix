@@ -21,6 +21,7 @@
     qgis
     papers
     dialect
+    bottles
     libreoffice-qt6-fresh
     (pkgs.citrix_workspace.override {
      libvorbis = pkgs.libvorbis.override {
@@ -35,6 +36,13 @@
      extraCerts = [../../../../../hosts/common/global/certificates/SectigoRSADomainValidationSecureServerCA.crt];
     })
   ];
+
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    installBatSyntax = true;
+    installVimSyntax = true;
+  };
 
   services.syncthing = {
     enable = true;
