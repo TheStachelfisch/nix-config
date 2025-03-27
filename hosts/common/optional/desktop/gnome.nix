@@ -18,6 +18,8 @@
     gnome-tour
     gnome-software
     gnome-connections
+    gnome-terminal
+    gnome-console
 
     epiphany # Gnome web
     geary # Mail viewer
