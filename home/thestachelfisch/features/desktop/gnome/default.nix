@@ -26,6 +26,8 @@
     search-light
   ];
 
+  gtk.enable = true;
+
   qt = {
     enable = true;
     platformTheme = {
