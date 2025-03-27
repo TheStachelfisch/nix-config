@@ -9,6 +9,8 @@
     QT_QPA_PLATFORM = "wayland";
   };
 
+  services.gnome-keyring.enable = true;
+
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";
