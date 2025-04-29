@@ -157,7 +157,7 @@
           targetUser = "thestachelfisch";
           buildOnTarget = true;
 
-          tags = ["arm" "oci"];
+          tags = ["arm" "oci" "server"];
         };
 
         imports = [
@@ -173,7 +173,7 @@
           targetPort = 23;
           buildOnTarget = true;
 
-          tags = ["arm" "home"];
+          tags = ["arm" "device"];
         };
 
         imports = [
