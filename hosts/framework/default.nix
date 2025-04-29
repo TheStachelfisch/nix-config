@@ -21,7 +21,7 @@
     ../common/optional/storagebox.nix
     ../common/optional/full-system-virtualization.nix
 
-    # ../common/optional/desktop/plasma.nix
+    ../common/optional/desktop
     ../common/optional/desktop/gnome.nix
   ];
 
