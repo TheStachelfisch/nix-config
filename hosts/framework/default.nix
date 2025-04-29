@@ -50,6 +50,8 @@
   ];
   virtualisation.waydroid.enable = true;
 
+  services.flatpak.enable = true;
+
   services.xserver.xkb.extraLayouts."EurKEY-Colemak" = {
     symbolsFile = ./EurKeyXKB;
     languages = ["eng" "ger"];
