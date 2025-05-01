@@ -4,6 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    resources
     easyeffects
     gnome-calculator
     nautilus
