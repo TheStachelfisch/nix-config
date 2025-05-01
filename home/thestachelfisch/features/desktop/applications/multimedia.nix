@@ -7,7 +7,7 @@
         ];
       };
     })
-    spotify
+    showtime
   ];
 
   home.file.".local/share/jellyfinmediaplayer/scripts/mpris.so" = {
