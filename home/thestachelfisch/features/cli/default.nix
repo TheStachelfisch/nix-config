@@ -10,6 +10,7 @@
 
   # Smaller CLI tools
   home.packages = with pkgs; [
+    wl-clipboard
   ];
 
   programs.nix-index.enable = true;
