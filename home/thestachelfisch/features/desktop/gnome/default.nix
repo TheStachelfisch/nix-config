@@ -24,6 +24,8 @@
     appindicator
     just-perfection
     search-light
+    quick-settings-tweaker
+    wireless-hid
   ];
 
   gtk.enable = true;
@@ -54,6 +56,8 @@
           "appindicatorsupport@rgcjonas.gmail.com"
           "places-menu@gnome-shell-extensions.gcampax.github.com"
           "just-perfection-desktop@just-perfection"
+          "quick-settings-tweaks@qwreey"
+          "wireless-hid@chlumskyvaclav.gmail.com"
         ];
       };
 
