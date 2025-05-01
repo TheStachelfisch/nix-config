@@ -20,6 +20,7 @@
     gnome-connections
     gnome-terminal
     gnome-console
+    gnome-system-monitor
 
     epiphany # Gnome web
     geary # Mail viewer
