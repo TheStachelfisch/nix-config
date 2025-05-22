@@ -90,7 +90,7 @@
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     ## NixOS Configurations
-    # Set for every system
+    # Set for every interactable system
     nixosConfigurations = {
       #Framework Laptop
       framework = lib.nixosSystem {
@@ -124,7 +124,6 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           nur.modules.homeManager.default
-          nix-index-database.hmModules.nix-index
           plasma-manager.homeManagerModules.plasma-manager
           ./hosts/framework/home.nix
         ];
@@ -133,7 +132,9 @@
       "thestachelfisch@wsl" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./hosts/wsl/home.nix];
+        modules = [
+            ./hosts/wsl/home.nix
+          ];
       };
     };
 

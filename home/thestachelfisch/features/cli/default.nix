@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   imports = [
     ./nushell
     ./nvim
@@ -13,7 +13,11 @@
     wl-clipboard
   ];
 
-  programs.nix-index.enable = true;
+  programs.nix-index = {
+    enable = true;
+    # package = pkgs.inputs.nix-index-database.nix-index-with-small-db;
+    package = inputs.nix-index-database.packages.${pkgs.stdenv.system}.nix-index-with-small-db;
+  };
 
   programs.nh = {
     enable = true;
