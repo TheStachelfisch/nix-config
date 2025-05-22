@@ -15,6 +15,7 @@
     jetbrains.datagrip
     jetbrains.pycharm-professional
     jetbrains.idea-ultimate
+    jetbrains.webstorm
     drawio
     figma-linux
     zotero
