@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./zsh
+    ./nushell
     ./nvim
     ./bat.nix
     ./git.nix

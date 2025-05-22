@@ -6,10 +6,11 @@
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
+  environment.shells = [ pkgs.nushell ];
   users.mutableUsers = false;
   users.users.thestachelfisch = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     extraGroups = ifTheyExist [
       "wheel"
       "audio"
@@ -23,9 +24,7 @@ in {
     openssh.authorizedKeys.keyFiles = [../../../../home/thestachelfisch/ssh.pub];
     hashedPasswordFile = config.sops.secrets.thestachelfisch-password.path;
   };
-
-  programs.zsh.enable = true;
-
+  
   sops.secrets.thestachelfisch-password = {
     sopsFile = ../../secrets.yaml;
     neededForUsers = true;
