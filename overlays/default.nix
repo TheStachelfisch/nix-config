@@ -2,7 +2,8 @@
   inputs,
   outputs,
 }: let
- file = builtins.fetchGit { url = "https://github.com/andrewmcgr/klipper_tmc_autotune.git"; rev = "03b49374d71fde201718f033843d687de8fe9de8"; }; 
+ tmc_autotune = builtins.fetchGit { url = "https://github.com/andrewmcgr/klipper_tmc_autotune.git"; rev = "03b49374d71fde201718f033843d687de8fe9de8"; }; 
+ cartographer_klipper  = builtins.fetchGit { url = "https://github.com/Cartographer3D/cartographer-klipper.git"; rev = "7e354f3baa4bcce53251e90c2154727db37c3c5f"; }; 
 in {
   # From https://github.com/Misterio77/nix-config/blob/eb20842094f8963d9231ed8bf5e682ee83619f92/overlays/default.nix#L13
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
@@ -48,6 +49,13 @@ in {
     });
 
     klipper = prev.klipper.overrideAttrs (oldAttrs: {
+      buildInputs = oldAttrs.buildInputs ++ [(prev.python3.withPackages (
+        p: with p; [
+          scipy
+          matplotlib
+        ]
+      ))];
+
       installPhase = ''
         runHook preInstall
     mkdir -p $out/lib/klipper
@@ -62,7 +70,8 @@ in {
     mkdir -p $out/lib/klippy/extras
     mkdir -p $out/lib/klippy/plugins
     # Copy custom extras
-    cp ${file.outPath}/*.{py,cfg} $out/lib/klipper/extras
+    cp ${tmc_autotune.outPath}/*.{py,cfg} $out/lib/klipper/extras
+    cp ${cartographer_klipper.outPath}/{idm.py,cartographer.py,scanner.py} $out/lib/klipper/extras
     cp -r $src/klippy/* $out/lib/klippy/
 
     # Add version information. For the normal procedure see https://www.klipper3d.org/Packaging.html#versioning
