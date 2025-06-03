@@ -12,12 +12,15 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     systems.url = "github:nix-systems/default-linux";
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Tools
     colmena = {
       url = "github:zhaofengli/colmena/direct-flake-eval";
-      inputs.stable.follows = "nixpkgs-stable";
+      inputs.stable.follows = "nixpkgs";
     };
 
     nix-index-database = {
