@@ -134,6 +134,13 @@
 
   systemd.services.mysql.wantedBy = lib.mkForce [];
 
+  services.mongodb = {
+    enable = true;
+    package = pkgs.mongodb-ce;
+    enableAuth = false;
+  };
+  systemd.services.mongodb.wantedBy = lib.mkForce [];
+
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
