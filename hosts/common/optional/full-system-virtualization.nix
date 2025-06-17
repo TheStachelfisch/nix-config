@@ -2,11 +2,16 @@
 {
   environment.systemPackages = with pkgs; [
     quickemu
+    dnsmasq
+  ];
+
+  networking.firewall.trustedInterfaces = [
+    "virbr0"
   ];
 
   virtualisation = {
     libvirtd = {
-      enable = true; 
+      enable = true;
       qemu = {
         swtpm.enable = true;
         ovmf.enable = true;
