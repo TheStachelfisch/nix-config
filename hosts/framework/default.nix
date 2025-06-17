@@ -58,6 +58,9 @@
     # inputs.colmena.packages.x86_64-linux.colmena
 
     blender-hip
+    samba
+
+    moonlight-qt
   ];
   virtualisation.waydroid.enable = true;
 
