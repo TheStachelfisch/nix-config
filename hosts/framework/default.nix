@@ -47,6 +47,8 @@
   services.fwupd.enable = true;
   services.libinput.enable = true;
 
+  services.gnome.gnome-remote-desktop.enable = true;
+
   environment.systemPackages = with pkgs; [
     keepassxc
     nur.repos.ataraxiasjel.waydroid-script
