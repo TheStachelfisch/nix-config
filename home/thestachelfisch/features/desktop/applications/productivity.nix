@@ -25,6 +25,8 @@
     dialect
     bottles
     libreoffice-qt6-fresh
+    rustdesk
+    orca-slicer
     (pkgs.citrix_workspace.override {
      libvorbis = pkgs.libvorbis.override {
        libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
