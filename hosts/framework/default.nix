@@ -32,6 +32,10 @@
     "amdgpu.dcdebugmask=0x410"
   ];
 
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0E8D", ATTRS{idProduct}=="E616", MODE="0666"
+  '';
+
   # TODO: Move to dedicated option for gaming peripherals
   hardware.xone.enable = true;
 
