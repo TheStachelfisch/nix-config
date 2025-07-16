@@ -18,16 +18,19 @@
     };
   };
 
-  home.packages = with pkgs.gnomeExtensions; [
-    blur-my-shell
-    unblank
-    appindicator
-    just-perfection
-    search-light
-    quick-settings-tweaker
-    wireless-hid
-  ];
-
+  programs.gnome-shell = {
+    enable = true;
+    extensions = [
+      { package = pkgs.gnomeExtensions.blur-my-shell; }
+      { package = pkgs.gnomeExtensions.unblank; }
+      { package = pkgs.gnomeExtensions.appindicator; }
+      { package = pkgs.gnomeExtensions.just-perfection; }
+      { package = pkgs.gnomeExtensions.wireless-hid; }
+      { package = pkgs.gnomeExtensions.gsconnect; }
+      { package = pkgs.gnomeExtensions.quick-settings-tweaker; }
+    ];
+  };
+    
   gtk.enable = true;
 
   qt = {
@@ -46,19 +49,6 @@
     settings = {
       "org/gnome/mutter" = {
         experimental-features = [ "variable-refresh-rate" "scale-monitor-framebuffer" "xwayland-native-scaling" "autoclose-xwayland" ];
-      };
-
-      "org/gnome/shell" = {
-        enabled-extensions = [
-          "drive-menu@gnome-shell-extensions.gcampax.github.com"
-          "blur-my-shell@aunetx"
-          "unblank@sun.wxg@gmail.com"
-          "appindicatorsupport@rgcjonas.gmail.com"
-          "places-menu@gnome-shell-extensions.gcampax.github.com"
-          "just-perfection-desktop@just-perfection"
-          "quick-settings-tweaks@qwreey"
-          "wireless-hid@chlumskyvaclav.gmail.com"
-        ];
       };
 
       "org/gnome/desktop/interface" = {
