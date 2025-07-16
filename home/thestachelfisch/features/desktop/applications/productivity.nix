@@ -25,20 +25,19 @@
     dialect
     bottles
     libreoffice-qt6-fresh
-    rustdesk
     orca-slicer
-    (pkgs.citrix_workspace.override {
-     libvorbis = pkgs.libvorbis.override {
-       libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
-         cmakeFlags =
-           (prevAttrs.cmakeFlags or [])
-           ++ [
-             (lib.cmakeBool "BUILD_SHARED_LIBS" true)
-           ];
-       });
-     };
-     extraCerts = [../../../../../hosts/common/global/certificates/SectigoRSADomainValidationSecureServerCA.crt];
-    })
+    # (pkgs.citrix_workspace.override {
+    #  libvorbis = pkgs.libvorbis.override {
+    #    libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
+    #      cmakeFlags =
+    #        (prevAttrs.cmakeFlags or [])
+    #        ++ [
+    #          (lib.cmakeBool "BUILD_SHARED_LIBS" true)
+    #        ];
+    #    });
+    #  };
+    #  extraCerts = [../../../../../hosts/common/global/certificates/SectigoRSADomainValidationSecureServerCA.crt];
+    # })
   ];
 
   programs.ghostty = {
