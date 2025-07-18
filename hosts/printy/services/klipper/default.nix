@@ -19,9 +19,9 @@
         configFile = ./configs/btt-octopus-firmware.cfg;   
       };
 
-      mellow-fly-sb2040 = {
+      btt-sb2209-rp2040 = {
         enable = true;
-        configFile = ./configs/mellow-fly-sb2040-v2-firmware.cfg;
+        configFile = ./configs/btt-sb2209-rp2040-firmware.cfg;
       };
     };
   };
