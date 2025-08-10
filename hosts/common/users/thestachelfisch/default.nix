@@ -19,6 +19,7 @@ in {
       "plugdev"
       "libvirtd"
       "kvm"
+      "gamemode"
     ];
 
     openssh.authorizedKeys.keyFiles = [../../../../home/thestachelfisch/ssh.pub];
