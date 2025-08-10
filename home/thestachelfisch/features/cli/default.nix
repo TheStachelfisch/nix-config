@@ -11,6 +11,7 @@
   # Smaller CLI tools
   home.packages = with pkgs; [
     wl-clipboard
+    hidapitester
   ];
 
   programs.nix-index = {
