@@ -16,7 +16,7 @@
     firmwares = {
       btt-octopus = {
         enable = true;
-        configFile = ./configs/btt-octopus-firmware.cfg;   
+        configFile = ./configs/btt-octopus-firmware.cfg;
       };
 
       btt-sb2209-rp2040 = {
@@ -33,13 +33,13 @@
       matchConfig = {
         Name = "can*";
       };
-      extraConfig = ''
+      extraConfig = /* ini */ ''
         [CAN]
         BitRate=1M
       '';
     };
   };
-  services.udev.extraRules = ''
+  services.udev.extraRules = /* udev */ ''
     SUBSYSTEM=="net", ACTION=="change|add", KERNEL=="can*"  ATTR{tx_queue_len}="128"
   '';
 
