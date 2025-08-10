@@ -80,4 +80,7 @@
       };
     };
   };
+
+  # Improve boot time
+  systemd.services.NetworkManager-wait-online.enable = false;
 }
