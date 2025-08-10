@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ../applications
@@ -28,10 +28,25 @@
       { package = pkgs.gnomeExtensions.wireless-hid; }
       { package = pkgs.gnomeExtensions.gsconnect; }
       { package = pkgs.gnomeExtensions.quick-settings-tweaker; }
+      { package = pkgs.gnomeExtensions.rounded-window-corners-reborn; }
+      { package = pkgs.gnomeExtensions.caffeine; }
+      { package = pkgs.gnomeExtensions.notification-timeout; }
+      { package = pkgs.gnomeExtensions.grand-theft-focus; }
     ];
   };
     
-  gtk.enable = true;
+  gtk = {
+    enable = true;
+    theme = {
+      # name = "adw-gtk${
+      #   if config.dconf.settings."org/gnome/desktop/interface".color-scheme == "prefer-dark"
+      #   then "-dark"
+      #   else ""
+      # }";
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
+  };
 
   qt = {
     enable = true;
