@@ -1,5 +1,9 @@
-{ lib, config, pkgs, ... }:
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # ../../../common/optional/server/certs/thestachelfisch-dev.nix
     ./klipper-screen.nix
@@ -33,15 +37,23 @@
       matchConfig = {
         Name = "can*";
       };
-      extraConfig = /* ini */ ''
-        [CAN]
-        BitRate=1M
-      '';
+      extraConfig =
+        /*
+        ini
+        */
+        ''
+          [CAN]
+          BitRate=1M
+        '';
     };
   };
-  services.udev.extraRules = /* udev */ ''
-    SUBSYSTEM=="net", ACTION=="change|add", KERNEL=="can*"  ATTR{tx_queue_len}="128"
-  '';
+  services.udev.extraRules =
+    /*
+    udev
+    */
+    ''
+      SUBSYSTEM=="net", ACTION=="change|add", KERNEL=="can*"  ATTR{tx_queue_len}="128"
+    '';
 
   services.moonraker = {
     enable = true;
@@ -72,5 +84,5 @@
   # For large gcode files
   services.nginx.clientMaxBodySize = "50m";
 
-  networking.firewall.allowedTCPPorts = [ 80 443 config.services.moonraker.port ];
+  networking.firewall.allowedTCPPorts = [80 443 config.services.moonraker.port];
 }

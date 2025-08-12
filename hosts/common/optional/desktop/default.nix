@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   fonts.fontDir.enable = true;
   documentation = {
     dev.enable = true;

@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../common/global
@@ -22,7 +25,7 @@
   # '';
 
   networking.networkmanager.wifi.backend = lib.mkForce "iwd";
-  
+
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
   networking.hostName = "printy";

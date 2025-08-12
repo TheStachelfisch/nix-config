@@ -18,5 +18,5 @@
     in ["${automount_opts},gid=${toString config.users.groups.mass-storage.gid},credentials=${config.sops.secrets.mass-storagebox.path}"];
   };
 
-  users.groups.mass-storage = { gid = 1005; };
+  users.groups.mass-storage = {gid = 1005;};
 }

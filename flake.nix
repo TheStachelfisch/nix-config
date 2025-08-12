@@ -38,7 +38,7 @@
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    }; 
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -157,8 +157,8 @@
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-            ./hosts/wsl/home.nix
-          ];
+          ./hosts/wsl/home.nix
+        ];
       };
     };
 
@@ -202,7 +202,7 @@
         };
 
         imports = [
-            ./hosts/printy
+          ./hosts/printy
         ];
       };
     };

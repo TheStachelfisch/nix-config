@@ -1,4 +1,8 @@
-{pkgs, config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     git-credential-manager
   ];
@@ -14,7 +18,10 @@
       init.defaultbranch = "master";
       credential = {
         helper = "manager";
-        credentialStore = if config.services.gnome-keyring.enable or config.qt.enable then "secretservice" else "cache";
+        credentialStore =
+          if config.services.gnome-keyring.enable or config.qt.enable
+          then "secretservice"
+          else "cache";
       };
     };
     lfs.enable = true;

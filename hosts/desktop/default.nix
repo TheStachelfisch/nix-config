@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     # Hardware imports
     ./hardware-configuration.nix
@@ -28,7 +27,7 @@
     enable = true;
     keyboards = {
       corsair = {
-        ids = [ "1b1c:1b49:30224719" ];
+        ids = ["1b1c:1b49:30224719"];
         settings = {
           main = {
             esc = "overload(capslock, esc)";
@@ -60,11 +59,12 @@
     vulkan-tools
 
     (pkgs.heroic.override {
-      extraPkgs = pkgs: with pkgs; [
-        # gamescope
-        gamemode
-        mangohud
-      ];
+      extraPkgs = pkgs:
+        with pkgs; [
+          # gamescope
+          gamemode
+          mangohud
+        ];
     })
   ];
   services.flatpak.enable = true;
@@ -74,7 +74,6 @@
     languages = ["eng" "ger"];
     description = "EurKEY Colemak layout";
   };
-
 
   # TODO: Move to dedicated option for gaming peripherals
   hardware.xone.enable = true;

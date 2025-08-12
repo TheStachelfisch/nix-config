@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   imports = [
     ../../../common/optional/server/certs/thestachelfisch-dev.nix
   ];
@@ -8,7 +7,7 @@
     enable = true;
   };
 
-  users.users.jellyfin.extraGroups = [ config.users.groups.mass-storage.name ];
+  users.users.jellyfin.extraGroups = [config.users.groups.mass-storage.name];
 
   # TODO: Add caching to config
   services.nginx = let
