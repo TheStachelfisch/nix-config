@@ -21,7 +21,6 @@
     zoom-us
     papers
     dialect
-    bottles
     libreoffice-qt6-fresh
 
     birdtray
