@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   imports = [
     # Hardware imports
     ./hardware-configuration.nix
@@ -23,6 +23,12 @@
   networking.hostName = "desktop";
   services.fwupd.enable = true;
   services.libinput.enable = true;
+
+  # Copy current monitors.xml into GDM
+  systemd.tmpfiles.rules = [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "monitors.xml" (builtins.readFile ./monitors.xml)}"
+  ];
+
   services.keyd = {
     enable = true;
     keyboards = {
