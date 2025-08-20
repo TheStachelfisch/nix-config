@@ -3,7 +3,8 @@
   outputs,
 }: let
  tmc_autotune = builtins.fetchGit { url = "https://github.com/andrewmcgr/klipper_tmc_autotune.git"; rev = "03b49374d71fde201718f033843d687de8fe9de8"; }; 
- cartographer_klipper  = builtins.fetchGit { url = "https://github.com/Cartographer3D/cartographer-klipper.git"; rev = "7e354f3baa4bcce53251e90c2154727db37c3c5f"; }; 
+ # cartographer_klipper  = builtins.fetchGit { url = "https://github.com/Cartographer3D/cartographer-klipper.git"; rev = "7e354f3baa4bcce53251e90c2154727db37c3c5f"; }; 
+ cartographer3d_plugin  = builtins.fetchGit { url = "https://github.com/Cartographer3D/cartographer3d-plugin.git"; rev = "ee69b82ac4502cbe9eb8bd0c2a1e5036d0e0c095"; }; 
 in {
   # From https://github.com/Misterio77/nix-config/blob/eb20842094f8963d9231ed8bf5e682ee83619f92/overlays/default.nix#L13
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
@@ -87,10 +88,12 @@ in {
     cp -r $src/scripts $out/lib/scripts
 
     mkdir -p $out/lib/klippy/extras
-    mkdir -p $out/lib/klippy/plugins
+    mkdir -p $out/lib/klippy-env
+
     # Copy custom extras
     cp ${tmc_autotune.outPath}/*.{py,cfg} $out/lib/klipper/extras
-    cp ${cartographer_klipper.outPath}/{idm.py,cartographer.py,scanner.py} $out/lib/klipper/extras
+    cp -r ${cartographer3d_plugin.outPath}/src/cartographer $out/lib/klipper/extras/cartographer
+    echo "from cartographer.extra import *" > $out/lib/klipper/extras/cartographer.py
     cp -r $src/klippy/* $out/lib/klippy/
 
     # Add version information. For the normal procedure see https://www.klipper3d.org/Packaging.html#versioning

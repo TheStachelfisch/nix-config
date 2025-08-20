@@ -15,12 +15,12 @@
 
     firmwares = {
       btt-octopus = {
-        enable = true;
+        enable = false;
         configFile = ./configs/btt-octopus-firmware.cfg;   
       };
 
       btt-sb2209-rp2040 = {
-        enable = true;
+        enable = false;
         configFile = ./configs/btt-sb2209-rp2040-firmware.cfg;
       };
     };
