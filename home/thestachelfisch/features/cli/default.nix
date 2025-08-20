@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./nushell
     ./nvim
@@ -11,6 +15,7 @@
   # Smaller CLI tools
   home.packages = with pkgs; [
     wl-clipboard
+    hidapitester
   ];
 
   programs.nix-index = {

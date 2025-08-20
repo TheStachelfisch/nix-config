@@ -4,10 +4,10 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 {
-config,
-lib,
-pkgs,
-...
+  config,
+  lib,
+  pkgs,
+  ...
 }: {
   imports = [
     ../common/global
@@ -24,7 +24,7 @@ pkgs,
   networking.hostName = "wsl";
   networking.firewall.enable = false;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   services.mysql = {
     enable = true;

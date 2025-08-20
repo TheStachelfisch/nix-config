@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   services.cage = {
     enable = true;
     user = config.services.moonraker.user;

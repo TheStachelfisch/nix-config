@@ -1,11 +1,4 @@
-{
-  pkgs,
-  inputs,
-  config,
-  lib,
-  ...
-}:
-{
+{pkgs, config, ...}: {
   imports = [
     # Hardware imports
     ./hardware-configuration.nix
@@ -25,33 +18,82 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # TODO: Move to dedicated option for gaming peripherals
-  hardware.xone.enable = true;
-
   programs.nix-ld.enable = true;
 
   networking.hostName = "desktop";
   services.fwupd.enable = true;
   services.libinput.enable = true;
 
+  # Copy current monitors.xml into GDM
+  systemd.tmpfiles.rules = [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "monitors.xml" (builtins.readFile ./monitors.xml)}"
+  ];
+
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      corsair = {
+        ids = ["1b1c:1b49:30224719"];
+        settings = {
+          main = {
+            esc = "overload(capslock, esc)";
+            capslock = "esc";
+            leftalt = "layer(nav)";
+          };
+          "nav:A" = {
+            h = "left";
+            k = "up";
+            j = "down";
+            l = "right";
+          };
+        };
+      };
+    };
+  };
+  services.hardware.openrgb.enable = true;
+
   environment.systemPackages = with pkgs; [
     keepassxc
-    nur.repos.ataraxiasjel.waydroid-script
     wineWowPackages.waylandFull
 
     pkgs.inputs.colmena.colmena
     # inputs.colmena.packages.x86_64-linux.colmena
 
     moonlight-qt
-  ];
-  virtualisation.waydroid.enable = true;
 
+    lsfg-vk
+    vulkan-tools
+
+    (pkgs.heroic.override {
+      extraPkgs = pkgs:
+        with pkgs; [
+          # gamescope
+          gamemode
+          mangohud
+        ];
+    })
+  ];
   services.flatpak.enable = true;
 
   services.xserver.xkb.extraLayouts."EurKEY-Colemak" = {
     symbolsFile = ./EurKeyXKB;
     languages = ["eng" "ger"];
     description = "EurKEY Colemak layout";
+  };
+
+  # TODO: Move to dedicated option for gaming peripherals
+  hardware.xone.enable = true;
+  programs.gamescope.enable = true;
+  programs.gamemode = {
+    enable = true;
+    settings = {
+      general = {
+        softrealtime = "auto";
+      };
+      custom = {
+        start = "${pkgs.libnotify}/bin/notify-send -a Gamemode -i application-x-addon -e 'Gamemode being used'";
+      };
+    };
   };
 
   programs.steam = {
@@ -67,7 +109,7 @@
     ];
     extest.enable = true;
     gamescopeSession = {
-      enable = true;
+      enable = false;
     };
   };
 

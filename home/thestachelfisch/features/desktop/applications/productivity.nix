@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     resources
     easyeffects
@@ -12,20 +8,19 @@
     loupe
     freecad-wayland
     obsidian
-    jetbrains.datagrip
-    jetbrains.pycharm-professional
-    jetbrains.idea-ultimate
-    jetbrains.webstorm
+    # jetbrains.datagrip
+    # jetbrains.pycharm-professional
+    # jetbrains.idea-ultimate
+    # jetbrains.webstorm
     drawio
     figma-linux
     zotero
     zoom-us
-    qgis
     papers
     dialect
-    bottles
     libreoffice-qt6-fresh
-    orca-slicer
+
+    birdtray
     # (pkgs.citrix_workspace.override {
     #  libvorbis = pkgs.libvorbis.override {
     #    libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
@@ -58,7 +53,7 @@
 
   programs.thunderbird = {
     enable = true;
-    package = pkgs.thunderbird-latest-unwrapped;
+    package = pkgs.thunderbird-latest;
     profiles = {
       "Ben" = {
         isDefault = true;

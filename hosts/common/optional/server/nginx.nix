@@ -1,5 +1,4 @@
-{ ... }: 
-{
+{...}: {
   services.nginx = {
     recommendedProxySettings = true;
     recommendedTlsSettings = true;

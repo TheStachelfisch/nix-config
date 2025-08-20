@@ -4,8 +4,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   imports = [
     # Hardware imports
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
@@ -90,22 +89,21 @@
   };
 
   # HIP Workaround
-   systemd.tmpfiles.rules = 
-    let
-      rocmEnv = pkgs.symlinkJoin {
-        name = "rocm-combined";
-        paths = with pkgs.rocmPackages; [
-          rocblas
-          hipblas
-          clr
-        ];
-      };
-    in [
-      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-    ];
+  systemd.tmpfiles.rules = let
+    rocmEnv = pkgs.symlinkJoin {
+      name = "rocm-combined";
+      paths = with pkgs.rocmPackages; [
+        rocblas
+        hipblas
+        clr
+      ];
+    };
+  in [
+    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+  ];
 
   # OpenCL
-  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+  hardware.graphics.extraPackages = with pkgs; [rocmPackages.clr.icd];
 
   # Windows 10 virsual machine shared folder
   services.spice-webdavd.enable = true;
@@ -117,7 +115,7 @@
       host all all 0.0.0.0/0 trust
     '';
     ensureUsers = [
-      { 
+      {
         name = "postgres";
         ensureClauses = {
           superuser = true;
@@ -132,12 +130,12 @@
     enable = true;
     package = pkgs.mariadb;
     ensureUsers = [
-    {
-      name = "root";
-      ensurePermissions = {
-        "*.*" = "ALl PRIVILEGES";
-      };
-    }
+      {
+        name = "root";
+        ensurePermissions = {
+          "*.*" = "ALl PRIVILEGES";
+        };
+      }
     ];
   };
 

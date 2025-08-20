@@ -36,7 +36,6 @@ in {
       vimPlugins = prev.vimPlugins // final.callPackage ../pkgs/vim-plugins {};
     };
 
-
   # Modifies existing packages
   modifications = final: prev: {
     keepassxc = prev.keepassxc.overrideAttrs (oldAttrs: {
@@ -53,39 +52,43 @@ in {
       libplacebo = final.libplacebo-mpv;
     };
 
-    libplacebo-mpv =
-      let
+    libplacebo-mpv = let
       version = "7.349.0";
     in
       prev.libplacebo.overrideAttrs (old: {
-          inherit version;
-          src = prev.fetchFromGitLab {
+        inherit version;
+        src = prev.fetchFromGitLab {
           domain = "code.videolan.org";
           owner = "videolan";
           repo = "libplacebo";
           rev = "v${version}";
           hash = "sha256-mIjQvc7SRjE1Orb2BkHK+K1TcRQvzj2oUOCUT4DzIuA=";
-          };
-          });
+        };
+      });
 
     klipper = prev.klipper.overrideAttrs (oldAttrs: {
-      buildInputs = oldAttrs.buildInputs ++ [(prev.python3.withPackages (
-        p: with p; [
-          scipy
-          matplotlib
-        ]
-      ))];
+      buildInputs =
+        oldAttrs.buildInputs
+        ++ [
+          (prev.python3.withPackages (
+            p:
+              with p; [
+                scipy
+                matplotlib
+              ]
+          ))
+        ];
 
       installPhase = ''
-        runHook preInstall
-    mkdir -p $out/lib/klipper
-    cp -r ./* $out/lib/klipper
+            runHook preInstall
+        mkdir -p $out/lib/klipper
+        cp -r ./* $out/lib/klipper
 
-    # Moonraker expects `config_examples` and `docs` to be available
-    # under `klipper_path`
-    cp -r $src/docs $out/lib/docs
-    cp -r $src/config $out/lib/config
-    cp -r $src/scripts $out/lib/scripts
+        # Moonraker expects `config_examples` and `docs` to be available
+        # under `klipper_path`
+        cp -r $src/docs $out/lib/docs
+        cp -r $src/config $out/lib/config
+        cp -r $src/scripts $out/lib/scripts
 
     mkdir -p $out/lib/klippy/extras
     mkdir -p $out/lib/klippy-env
@@ -96,20 +99,20 @@ in {
     echo "from cartographer.extra import *" > $out/lib/klipper/extras/cartographer.py
     cp -r $src/klippy/* $out/lib/klippy/
 
-    # Add version information. For the normal procedure see https://www.klipper3d.org/Packaging.html#versioning
-    # This is done like this because scripts/make_version.py is not available when sourceRoot is set to "${oldAttrs.src.name}/klippy"
-    echo "${oldAttrs.version}-NixOS" > $out/lib/klipper/.version
+        # Add version information. For the normal procedure see https://www.klipper3d.org/Packaging.html#versioning
+        # This is done like this because scripts/make_version.py is not available when sourceRoot is set to "${oldAttrs.src.name}/klippy"
+        echo "${oldAttrs.version}-NixOS" > $out/lib/klipper/.version
 
-    mkdir -p $out/bin
-    chmod 755 $out/lib/klipper/klippy.py
-    makeWrapper $out/lib/klipper/klippy.py $out/bin/klippy --chdir $out/lib/klipper
+        mkdir -p $out/bin
+        chmod 755 $out/lib/klipper/klippy.py
+        makeWrapper $out/lib/klipper/klippy.py $out/bin/klippy --chdir $out/lib/klipper
 
-    substitute "$pythonScriptWrapper" "$out/bin/klipper-calibrate-shaper" \
-      --subst-var "out" \
-      --subst-var-by "script" "calibrate_shaper.py"
-    chmod 755 "$out/bin/klipper-calibrate-shaper"
+        substitute "$pythonScriptWrapper" "$out/bin/klipper-calibrate-shaper" \
+          --subst-var "out" \
+          --subst-var-by "script" "calibrate_shaper.py"
+        chmod 755 "$out/bin/klipper-calibrate-shaper"
 
-    runHook postInstall
+        runHook postInstall
       '';
     });
   };

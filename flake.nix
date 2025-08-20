@@ -19,7 +19,7 @@
 
     # Tools
     colmena = {
-      url = "github:zhaofengli/colmena/direct-flake-eval";
+      url = "github:zhaofengli/colmena";
       inputs.stable.follows = "nixpkgs";
     };
 
@@ -38,7 +38,7 @@
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    }; 
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,9 +51,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zls = {
-      url = "github:zigtools/zls/0.13.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.zig-overlay.follows = "zig";
+      url = "github:zigtools/zls/";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.zig-overlay.follows = "zig";
     };
   };
 
@@ -95,11 +95,22 @@
     ## NixOS Configurations
     # Set for every interactable system
     nixosConfigurations = {
-      #Framework Laptop
+      # Framework Laptop
       framework = lib.nixosSystem {
         modules = [
           nur.modules.nixos.default
           ./hosts/framework
+        ];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
+      # NixOS Desktop
+      desktop = lib.nixosSystem {
+        modules = [
+          nur.modules.nixos.default
+          ./hosts/desktop
         ];
         specialArgs = {
           inherit inputs outputs;
@@ -132,12 +143,22 @@
         ];
       };
 
+      "thestachelfisch@desktop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          nur.modules.homeManager.default
+          plasma-manager.homeManagerModules.plasma-manager
+          ./hosts/desktop/home.nix
+        ];
+      };
+
       "thestachelfisch@wsl" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-            ./hosts/wsl/home.nix
-          ];
+          ./hosts/wsl/home.nix
+        ];
       };
     };
 
@@ -181,7 +202,7 @@
         };
 
         imports = [
-            ./hosts/printy
+          ./hosts/printy
         ];
       };
     };

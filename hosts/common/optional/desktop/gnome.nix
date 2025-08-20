@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ../sound.nix
     ../printing.nix
@@ -15,7 +18,12 @@
   };
 
   networking.firewall = rec {
-    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 
@@ -30,11 +38,11 @@
     epiphany # Gnome web
     geary # Mail viewer
     totem # Standard video player
-    yelp  # Help software
+    yelp # Help software
     evince # Standard document viewer
   ];
 
-  services.udev.packages = [ pkgs.gnome-settings-daemon ];
+  services.udev.packages = [pkgs.gnome-settings-daemon];
   programs.dconf.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
