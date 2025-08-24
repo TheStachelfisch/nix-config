@@ -48,6 +48,41 @@ in {
       buildInputs = oldAttrs.buildInputs ++ [final.keyutils];
     });
 
+    orca-slicer = prev.orca-slicer.overrideAttrs(oldAttrs: {
+      src = prev.fetchFromGitHub {
+        owner = "SoftFever";
+        repo = "OrcaSlicer";
+        rev = "v2.3.1-alpha";
+        hash = "sha256-hdo6lzICyIottf9057HQ3KIdZ0GZEIWV4SOjvwe6W1k=";
+      };
+
+      patches = [
+        (prev.fetchpatch {
+          name = "pr-7650-configurable-update-check.patch";
+          url = "https://github.com/SoftFever/OrcaSlicer/commit/d10a06ae11089cd1f63705e87f558e9392f7a167.patch";
+          hash = "sha256-t4own5AwPsLYBsGA15id5IH1ngM0NSuWdFsrxMRXmTk=";
+        })
+
+        (prev.fetchpatch {
+          name = "0001-not-for-upstream-CMakeLists-Link-against-webkit2gtk-.patch";
+          url = "https://github.com/NixOS/nixpkgs/raw/refs/heads/nixos-unstable/pkgs/by-name/or/orca-slicer/patches/0001-not-for-upstream-CMakeLists-Link-against-webkit2gtk-.patch";
+          hash = "sha256-ZKAsovfU5e/Uh1yaYeiKmWDaq61ja3XbkzmTeOnVJPY=";
+        })
+
+        (prev.fetchpatch {
+          name = "dont-link-opencv-world-orca.patch";
+          url = "https://github.com/NixOS/nixpkgs/raw/refs/heads/nixos-unstable/pkgs/by-name/or/orca-slicer/patches/dont-link-opencv-world-orca.patch";
+          hash = "sha256-4SkzI2SGfunxt8+dLiAumKjjAjmpR1QU0YEvJhe82rQ=";
+        })
+      ];
+
+      prePatch = ''
+        sed -i 's|nlopt_cxx|nlopt|g' cmake/modules/FindNLopt.cmake
+        sed -i 's|"libnoise/noise.h"|"noise/noise.h"|' src/libslic3r/PerimeterGenerator.cpp
+        sed -i 's|"libnoise/noise.h"|"noise/noise.h"|' src/libslic3r/Feature/FuzzySkin/FuzzySkin.cpp
+      '';
+    });
+
     mpv-unwrapped = prev.mpv-unwrapped.override {
       libplacebo = final.libplacebo-mpv;
     };
