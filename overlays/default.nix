@@ -2,9 +2,9 @@
   inputs,
   outputs,
 }: let
- tmc_autotune = builtins.fetchGit { url = "https://github.com/andrewmcgr/klipper_tmc_autotune.git"; rev = "03b49374d71fde201718f033843d687de8fe9de8"; }; 
- # cartographer_klipper  = builtins.fetchGit { url = "https://github.com/Cartographer3D/cartographer-klipper.git"; rev = "7e354f3baa4bcce53251e90c2154727db37c3c5f"; }; 
- cartographer3d_plugin  = builtins.fetchGit { url = "https://github.com/Cartographer3D/cartographer3d-plugin.git"; rev = "ee69b82ac4502cbe9eb8bd0c2a1e5036d0e0c095"; }; 
+  tmc_autotune = builtins.fetchGit { url = "https://github.com/andrewmcgr/klipper_tmc_autotune.git"; rev = "03b49374d71fde201718f033843d687de8fe9de8"; }; 
+  # cartographer_klipper  = builtins.fetchGit { url = "https://github.com/Cartographer3D/cartographer-klipper.git"; rev = "7e354f3baa4bcce53251e90c2154727db37c3c5f"; }; 
+  #  cartographer3d_plugin  = builtins.fetchGit { url = "https://github.com/Cartographer3D/cartographer3d-plugin.git"; rev = "ee69b82ac4502cbe9eb8bd0c2a1e5036d0e0c095"; }; 
 in {
   # From https://github.com/Misterio77/nix-config/blob/eb20842094f8963d9231ed8bf5e682ee83619f92/overlays/default.nix#L13
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
@@ -66,38 +66,29 @@ in {
         };
       });
 
-    klipper = prev.klipper.overrideAttrs (oldAttrs: {
-      buildInputs =
-        oldAttrs.buildInputs
-        ++ [
-          (prev.python3.withPackages (
-            p:
-              with p; [
-                scipy
-                matplotlib
-              ]
-          ))
-        ];
-
-      installPhase = ''
-            runHook preInstall
+    klipper = (prev.klipper.override {
+      extraPythonPackages = ps: [ final.pkgs.cartographer3d-plugin ];
+    }).overrideAttrs (oldAttrs: {
+        installPhase = /* sh */ ''
+        runHook preInstall
         mkdir -p $out/lib/klipper
         cp -r ./* $out/lib/klipper
+
+        # Copy custom extras
+        mkdir -p $out/lib/klippy/extras
+        mkdir -p $out/lib/klipper/extras
+
+        # TMC Autotune
+        cp ${tmc_autotune.outPath}/*.{py,cfg} $out/lib/klipper/extras
+        # Cartograther3d-plugin
+        echo "from cartographer.extra import *" > $out/lib/klipper/extras/cartographer.py
 
         # Moonraker expects `config_examples` and `docs` to be available
         # under `klipper_path`
         cp -r $src/docs $out/lib/docs
         cp -r $src/config $out/lib/config
         cp -r $src/scripts $out/lib/scripts
-
-    mkdir -p $out/lib/klippy/extras
-    mkdir -p $out/lib/klippy-env
-
-    # Copy custom extras
-    cp ${tmc_autotune.outPath}/*.{py,cfg} $out/lib/klipper/extras
-    cp -r ${cartographer3d_plugin.outPath}/src/cartographer $out/lib/klipper/extras/cartographer
-    echo "from cartographer.extra import *" > $out/lib/klipper/extras/cartographer.py
-    cp -r $src/klippy/* $out/lib/klippy/
+        cp -r $src/klippy/* $out/lib/klippy/
 
         # Add version information. For the normal procedure see https://www.klipper3d.org/Packaging.html#versioning
         # This is done like this because scripts/make_version.py is not available when sourceRoot is set to "${oldAttrs.src.name}/klippy"
@@ -108,12 +99,12 @@ in {
         makeWrapper $out/lib/klipper/klippy.py $out/bin/klippy --chdir $out/lib/klipper
 
         substitute "$pythonScriptWrapper" "$out/bin/klipper-calibrate-shaper" \
-          --subst-var "out" \
-          --subst-var-by "script" "calibrate_shaper.py"
+        --subst-var "out" \
+        --subst-var-by "script" "calibrate_shaper.py"
         chmod 755 "$out/bin/klipper-calibrate-shaper"
 
         runHook postInstall
-      '';
-    });
+        '';
+      });
   };
 }

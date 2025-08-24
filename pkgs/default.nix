@@ -1,3 +1,3 @@
 {pkgs}: rec {
-  cartographer3d-plugin = pkgs.python312Packages.callPackage ./cartographer3d-plugin {};
+  cartographer3d-plugin = pkgs.python3Packages.callPackage ./cartographer3d-plugin {};
 }
