@@ -51,9 +51,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zls = {
-      url = "github:zigtools/zls/";
-      # inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.zig-overlay.follows = "zig";
+      url = "github:zigtools/zls";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.zig-overlay.follows = "zig";
     };
   };
 
