@@ -20,6 +20,7 @@ in {
       "libvirtd"
       "kvm"
       "gamemode"
+      "podman"
     ];
 
     openssh.authorizedKeys.keyFiles = [../../../../home/thestachelfisch/ssh.pub];
