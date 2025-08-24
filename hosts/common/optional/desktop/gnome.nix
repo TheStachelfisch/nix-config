@@ -9,8 +9,8 @@
     ../quietboot.nix
   ];
 
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
