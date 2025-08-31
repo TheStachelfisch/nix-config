@@ -52,7 +52,7 @@
   };
 
   programs.thunderbird = {
-    enable = true;
+    enable = false;
     package = pkgs.thunderbird-latest;
     profiles = {
       "Ben" = {
