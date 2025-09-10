@@ -16,6 +16,7 @@
         graalvm-ce-23 = oldPkgsGraal.graalvm-ce;
       in [
         graalvm-ce-23
+        zulu17
       ];
 
       additionalPrograms = let
