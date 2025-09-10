@@ -49,6 +49,7 @@ in {
     });
 
     orca-slicer = prev.orca-slicer.overrideAttrs(oldAttrs: {
+      version = "v2.3.1-alpha";
       src = prev.fetchFromGitHub {
         owner = "SoftFever";
         repo = "OrcaSlicer";
