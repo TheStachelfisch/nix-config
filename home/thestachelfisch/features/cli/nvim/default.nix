@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, inputs, ...}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -10,9 +6,21 @@
     vimAlias = true;
     vimdiffAlias = true;
     extraPackages = with pkgs; [
-      ripgrep
+      # Required for Treesitter
+      gcc
 
-      lua-language-server
+      ripgrep
+      fd
+      fzf
+
+      # Language Server
+      lua-language-server # Lua
+      nil # Nix
+      zls_0_15
+      vtsls # Typescript
+      vue-language-server # Vue
+      astro-language-server # Astro
+      tailwindcss-language-server # Tailwind CSS
     ];
   };
 
