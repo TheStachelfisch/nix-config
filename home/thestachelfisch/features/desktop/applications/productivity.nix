@@ -19,8 +19,7 @@
     papers
     dialect
     libreoffice-qt6-fresh
-
-    birdtray
+    bottles
     # (pkgs.citrix_workspace.override {
     #  libvorbis = pkgs.libvorbis.override {
     #    libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
@@ -73,7 +72,7 @@
         clearurls
         return-youtube-dislikes
         darkreader
-        enhancer-for-youtube
+        tweaks-for-youtube
         fastforwardteam
         sponsorblock
         zotero-connector
