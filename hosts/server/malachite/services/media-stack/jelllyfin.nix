@@ -1,6 +1,6 @@
 {config, ...}: {
   imports = [
-    ../../../common/optional/server/certs/thestachelfisch-dev.nix
+    ../../../../common/optional/server/certs/thestachelfisch-dev.nix
   ];
 
   services.jellyfin = {

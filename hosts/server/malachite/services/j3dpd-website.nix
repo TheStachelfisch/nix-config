@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ../../common/optional/server/certs/j3dpd-com.nix
+    ../../../common/optional/server/certs/j3dpd-com.nix
   ];
 
   services.nginx = {

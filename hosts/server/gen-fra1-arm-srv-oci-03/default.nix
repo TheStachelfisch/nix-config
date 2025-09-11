@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../common/global
-    ../common/users/thestachelfisch
-    ../common/optional/server
+    ../../common/global
+    ../../common/users/thestachelfisch
+    ../../common/optional/server
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
