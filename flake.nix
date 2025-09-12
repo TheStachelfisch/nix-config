@@ -181,6 +181,7 @@
           nixpkgs = pkgsForStable.x86_64-linux;
           nodeNixpkgs = {
             malachite = pkgsForStable.aarch64-linux;
+            gen-fra1-arm-srv-oci-03 = pkgsForStable.aarch64-linux;
             printy = pkgsForStable.aarch64-linux;
           };
 
@@ -205,7 +206,7 @@
 
         gen-fra1-arm-srv-oci-03 = {
           deployment = {
-            targetHost = "malachite.thestachelfisch.dev";
+            targetHost = "gen-fra1-arm-srv-oci-03.thestachelfisch.dev";
             targetUser = "root";
             buildOnTarget = true;
 
