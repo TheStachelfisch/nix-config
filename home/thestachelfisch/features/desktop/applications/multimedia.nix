@@ -1,12 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    (jellyfin-media-player.override {
-      mpv = mpv.override {
-        scripts = with pkgs.mpvScripts; [
-          mpris
-        ];
-      };
-    })
+    # (jellyfin-media-player.override {
+    #   mpv = mpv.override {
+    #     scripts = with pkgs.mpvScripts; [
+    #       mpris
+    #     ];
+    #   };
+    # })
     showtime
   ];
 
