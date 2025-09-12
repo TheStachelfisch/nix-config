@@ -207,7 +207,7 @@
         gen-fra1-arm-srv-oci-03 = {
           deployment = {
             targetHost = "gen-fra1-arm-srv-oci-03.thestachelfisch.dev";
-            targetUser = "root";
+            targetUser = "thestachelfisch";
             buildOnTarget = true;
 
             tags = ["arm" "oci" "server"];
