@@ -21,6 +21,7 @@ in {
       "kvm"
       "gamemode"
       "podman"
+      "dialout"
     ];
 
     openssh.authorizedKeys.keyFiles = [../../../../home/thestachelfisch/ssh.pub];
