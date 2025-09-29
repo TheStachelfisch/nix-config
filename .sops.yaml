@@ -23,6 +23,12 @@ creation_rules:
       - *printy
       pgp:
       - *thestachelfisch
+  - path_regex: hosts/printy/printy_secrets.ini
+    key_groups:
+    - age:
+      - *printy
+      pgp:
+        - *thestachelfisch
   - path_regex: home/thestachelfisch/secrets.ya?ml$
     key_groups:
     - pgp:
