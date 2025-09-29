@@ -182,7 +182,7 @@
           nodeNixpkgs = {
             malachite = pkgsForStable.aarch64-linux;
             gen-fra1-arm-srv-oci-03 = pkgsForStable.aarch64-linux;
-            printy = pkgsForStable.aarch64-linux;
+            printy = pkgsFor.aarch64-linux;
           };
 
           specialArgs = {
