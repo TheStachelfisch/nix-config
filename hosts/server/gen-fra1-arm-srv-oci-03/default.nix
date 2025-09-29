@@ -14,5 +14,7 @@
   zramSwap.enable = true;
   networking.hostName = "gen-fra1-arm-srv-oci-03";
 
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+
   system.stateVersion = "23.11";
 }
