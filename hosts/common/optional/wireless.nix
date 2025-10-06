@@ -50,9 +50,9 @@
         };
         eduroam = {
           "802-1x" = {
-            ca-cert = "/etc/easyroam-certs/easyroam_root_ca.pem";
             client-cert = "/etc/easyroam-certs/easyroam_client_cert.pem";
             eap = "tls;";
+            proto = "WPA RSN";
             identity = "$IDENTITY_EDUROAM";
             private-key = "/etc/easyroam-certs/easyroam_client_key.pem";
             private-key-password = "$PSK_EDUROAM";
