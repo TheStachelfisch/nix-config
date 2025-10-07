@@ -1,4 +1,4 @@
-{pkgs, config, ...}: let
+{pkgs, lib, config, ...}: let
   orcaSlicerDesktopItem = pkgs.makeDesktopItem {
     name = "orca-slicer-zink";
     desktopName = "OrcaSlicer";
@@ -57,8 +57,15 @@ in {
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   programs.nix-ld.enable = true;
+
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openvpn
+    networkmanager-fortisslvpn
+    networkmanager-openconnect
+  ];
 
   networking.hostName = "desktop";
   services.fwupd.enable = true;
@@ -142,6 +149,7 @@ in {
   environment.etc."xdg/mimeapps.list".source = orcaSlicerMimeappsList;
   environment.etc."xdg/mimeapps.list".mode = "0644";
 
+  security.lsm = lib.mkForce [ ];
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
