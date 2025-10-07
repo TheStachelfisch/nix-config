@@ -21,11 +21,13 @@
       vue-language-server # Vue
       astro-language-server # Astro
       tailwindcss-language-server # Tailwind CSS
+      basedpyright # Python type checker
+      ruff # Python LSP
     ];
   };
 
-  # xdg.configFile.nvim = {
-  #   source = ./config;
-  #   recursive = true;
-  # };
+  xdg.configFile.nvim = {
+    source = ./config;
+    recursive = true;
+  };
 }
