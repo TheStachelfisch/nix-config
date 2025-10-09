@@ -60,6 +60,7 @@
     samba
 
     moonlight-qt
+    orca-slicer
   ];
   virtualisation.waydroid.enable = true;
 
