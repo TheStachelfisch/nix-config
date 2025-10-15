@@ -85,21 +85,21 @@
   };
 
   # HIP Workaround
-  systemd.tmpfiles.rules = let
-    rocmEnv = pkgs.symlinkJoin {
-      name = "rocm-combined";
-      paths = with pkgs.rocmPackages; [
-        rocblas
-        hipblas
-        clr
-      ];
-    };
-  in [
-    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-  ];
+  # systemd.tmpfiles.rules = let
+  #   rocmEnv = pkgs.symlinkJoin {
+  #     name = "rocm-combined";
+  #     paths = with pkgs.rocmPackages; [
+  #       rocblas
+  #       hipblas
+  #       clr
+  #     ];
+  #   };
+  # in [
+  #   "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+  # ];
 
   # OpenCL
-  hardware.graphics.extraPackages = with pkgs; [rocmPackages.clr.icd];
+  # hardware.graphics.extraPackages = with pkgs; [rocmPackages.clr.icd];
 
   # Windows 10 virsual machine shared folder
   services.spice-webdavd.enable = true;
