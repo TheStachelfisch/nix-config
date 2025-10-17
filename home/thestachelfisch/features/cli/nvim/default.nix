@@ -8,6 +8,7 @@
     extraPackages = with pkgs; [
       # Required for Treesitter
       gcc
+      tree-sitter
 
       ripgrep
       fd
@@ -23,6 +24,7 @@
       tailwindcss-language-server # Tailwind CSS
       basedpyright # Python type checker
       ruff # Python LSP
+      phpactor # PHP LSP
     ];
   };
 

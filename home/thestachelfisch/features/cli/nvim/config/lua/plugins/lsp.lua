@@ -153,7 +153,8 @@ return {
         tailwindcss = { },
         astro = { },
         ruff = { },
-        basedpyright = { };
+        basedpyright = { },
+        phpactor = { },
       },
     },
     config = function(_, opts)

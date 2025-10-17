@@ -293,5 +293,9 @@ return {
       { "<leader>-", function() require("oil").toggle_float() end, desc = "Open Oil (Parent)" },
       { "<leader>_", function() require("oil").toggle_float(".") end, desc = "Open Oil (cwd)" },
     }
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
   }
 }
