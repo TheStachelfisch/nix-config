@@ -30,6 +30,12 @@
     SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0E8D", ATTRS{idProduct}=="E616", MODE="0666"
   '';
 
+  # Disable panel self refresh to fix artifacts issues on eDP.
+  # Shouldn't be needed with newer kernels at some point
+  boot.kernelParams = [
+    "amdgpu.dcdebugmask=0x410"
+  ];
+
   # TODO: Move to dedicated option for gaming peripherals
   hardware.xone.enable = true;
 
