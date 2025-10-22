@@ -141,7 +141,7 @@ return {
               }
             }
           },
-          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "astro" }
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "javascript.jsx", "typescript.tsx", "vue", "astro" }
         },
         vue_ls = {
           init_options = {
