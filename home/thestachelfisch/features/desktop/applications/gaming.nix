@@ -1,8 +1,8 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   home.packages = with pkgs; [
     cemu
     dolphin-emu
-    # suyu
+    inputs.suyu.packages.${pkgs.system}.suyu
 
     (prismlauncher.override {
       gamemodeSupport = true;

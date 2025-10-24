@@ -55,6 +55,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.zig-overlay.follows = "zig";
     };
+
+    # Programs
+    suyu = {
+      url = "github:Noodlez1232/suyu-flake";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
   };
 
   outputs = {
