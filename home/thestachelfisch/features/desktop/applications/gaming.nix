@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     cemu
     dolphin-emu
-    inputs.suyu.packages.${pkgs.system}.suyu
+    inputs.eden.packages.${pkgs.system}.eden
 
     (prismlauncher.override {
       gamemodeSupport = true;

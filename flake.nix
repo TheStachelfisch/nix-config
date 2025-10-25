@@ -2,8 +2,8 @@
   description = "Personal NixOS config";
 
   nixConfig = {
-    extra-substituters = ["https://hyprland.cachix.org" "https://nix-community.cachix.org"];
-    extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
+    extra-substituters = ["https://hyprland.cachix.org" "https://nix-community.cachix.org" "https://eden-flake.cachix.org"];
+    extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" "eden-flake.cachix.org-1:9orwA5vFfBgb67pnnpsxBqILQlb2UI2grWt4zHHAxs8="];
   };
 
   inputs = {
@@ -57,11 +57,7 @@
     };
 
     # Programs
-    suyu = {
-      url = "github:Noodlez1232/suyu-flake";
-      # inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-    };
+    eden.url = "github:TheStachelfisch/eden-flake";
   };
 
   outputs = {

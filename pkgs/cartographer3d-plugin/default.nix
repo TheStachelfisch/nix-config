@@ -11,13 +11,13 @@
 }:
 buildPythonPackage rec {
   pname = "cartographer3d-plugin";
-  version = "v0.7.3";
+  version = "v0.7.4";
 
   src = fetchFromGitHub {
     owner = "Cartographer3D";
     repo = "cartographer3d-plugin";
     rev = version;
-    hash = "sha256-Rn/hmbCGOGHF1eNMVH/UxejqpLm+EgW6w/7f/HnK7Mk=";
+    hash = "sha256-BU8R6QHy5HByCApSb3ff5xveOPioT5L+vcsr7xFEue8=";
   };
 
   pyproject = true;
