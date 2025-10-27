@@ -57,7 +57,7 @@
     };
 
     # Programs
-    eden.url = "github:TheStachelfisch/eden-flake";
+    eden.url = "github:Grantimatter/eden-flake";
   };
 
   outputs = {

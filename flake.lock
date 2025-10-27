@@ -63,15 +63,15 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1761343173,
-        "narHash": "sha256-qk4NPWrU6hAfnAWS8i/i993jqoB9jWBKHpxF69s63nA=",
-        "owner": "TheStachelfisch",
+        "lastModified": 1761573825,
+        "narHash": "sha256-qEa+gv3qanwTxI7wyeNEz0KZk+cz527iJG+V89bZIXY=",
+        "owner": "Grantimatter",
         "repo": "eden-flake",
-        "rev": "0797e1b4a0c0f17c3c230754736289fee255dd20",
+        "rev": "f33193d175cb59a48a0b06dfe2a5f39838218be2",
         "type": "github"
       },
       "original": {
-        "owner": "TheStachelfisch",
+        "owner": "Grantimatter",
         "repo": "eden-flake",
         "type": "github"
       }
