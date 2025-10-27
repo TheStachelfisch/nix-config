@@ -85,6 +85,11 @@ in {
     "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "monitors.xml" (builtins.readFile ./monitors.xml)}"
   ];
 
+  # Dolphin USB passthrough
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0025", MODE="0666"
+  '';
+
   services.keyd = {
     enable = true;
     keyboards = {
