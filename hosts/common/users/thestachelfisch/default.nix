@@ -16,13 +16,12 @@ in {
       "audio"
       "video"
       "network"
-      "plugdev"
       "libvirtd"
       "kvm"
       "gamemode"
       "podman"
       "dialout"
-    ];
+    ] ++ [ "plugdev" ];
 
     openssh.authorizedKeys.keyFiles = [../../../../home/thestachelfisch/ssh.pub];
     hashedPasswordFile = config.sops.secrets.thestachelfisch-password.path;
