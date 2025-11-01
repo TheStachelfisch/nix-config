@@ -1,5 +1,4 @@
 {
-  lib,
   fetchFromGitHub,
   buildPythonPackage,
   hatchling,
@@ -11,13 +10,13 @@
 }:
 buildPythonPackage rec {
   pname = "cartographer3d-plugin";
-  version = "v0.7.4";
+  version = "v1.0.0";
 
   src = fetchFromGitHub {
     owner = "Cartographer3D";
     repo = "cartographer3d-plugin";
     rev = version;
-    hash = "sha256-BU8R6QHy5HByCApSb3ff5xveOPioT5L+vcsr7xFEue8=";
+    hash = "sha256-rQPDUChekGVIBYLtVtfpn/mChQG1oNHrF7HKX2RW3JY=";
   };
 
   pyproject = true;
