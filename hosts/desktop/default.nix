@@ -61,12 +61,6 @@ in {
 
   programs.nix-ld.enable = true;
 
-  networking.networkmanager.plugins = with pkgs; [
-    networkmanager-openvpn
-    networkmanager-fortisslvpn
-    networkmanager-openconnect
-  ];
-
   networking.hostName = "desktop";
   services.fwupd.enable = true;
   services.libinput.enable = true;

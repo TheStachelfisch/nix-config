@@ -42,6 +42,12 @@
     evince # Standard document viewer
   ];
 
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openvpn
+    networkmanager-fortisslvpn
+    networkmanager-openconnect
+  ];
+
   services.udev.packages = [pkgs.gnome-settings-daemon];
   programs.dconf.enable = true;
 
