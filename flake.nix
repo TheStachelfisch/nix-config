@@ -227,7 +227,7 @@
           targetHost = "printy.thestachelfisch.dev";
           targetUser = "thestachelfisch";
           targetPort = 23;
-          buildOnTarget = false;
+          buildOnTarget = true;
 
           tags = ["arm" "device"];
         };
