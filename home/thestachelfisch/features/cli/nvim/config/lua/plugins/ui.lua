@@ -162,5 +162,6 @@ return {
         position = "right"
       },
     }
-  }
+  },
+  { "RRethy/vim-illuminate" }
 }

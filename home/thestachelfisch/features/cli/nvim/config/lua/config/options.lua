@@ -26,9 +26,12 @@ opt.fixeol = true
 opt.undofile = true
 opt.undolevels = 5000
 
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldenable = true
+-- opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
 opt.foldmethod = "expr"
 opt.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+opt.foldlevel = 99
 opt.foldlevelstart = 99
 
 -- Keybinds

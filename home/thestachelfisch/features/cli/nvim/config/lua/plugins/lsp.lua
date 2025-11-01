@@ -44,6 +44,12 @@ return {
             willRename = true,
           },
         },
+        textDocument = {
+          foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+          }
+        },
       },
       servers = {
         lua_ls = {
@@ -196,6 +202,11 @@ return {
             vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
           end
         end)
+      end
+
+      -- Global capabilities added to every language server
+      if opts.capabilities then
+        vim.lsp.config("*", { capabilities = opts.capabilities })
       end
 
       -- Keymap
