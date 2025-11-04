@@ -16,7 +16,7 @@
 
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
-  networking.hostName = "malachite";
+  networking.hostName = "gen-fra1-arm-srv-oci-02";
 
   system.stateVersion = "23.11";
 }
