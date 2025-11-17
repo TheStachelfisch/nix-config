@@ -1,61 +1,104 @@
-<monitors version="2">                                                                                                                                      <configuration>
-  <layoutmode>physical</layoutmode>
-  <logicalmonitor>
-    <x>0</x>
-    <y>1080</y>
-    <scale>1</scale>
-    <monitor>
-      <monitorspec>
-        <connector>DP-3</connector>
-        <vendor>AUS</vendor>
-        <product>VG245</product>
-        <serial>J9LMQS074822</serial>
-      </monitorspec>
-      <mode>
-        <width>1920</width>
-        <height>1080</height>
-        <rate>75.001</rate>
-      </mode>
-    </monitor>
-  </logicalmonitor>
-  <logicalmonitor>
-    <x>1920</x>
-    <y>1080</y>
-    <scale>1</scale>
-    <primary>yes</primary>
-    <monitor>
-      <monitorspec>
-        <connector>HDMI-1</connector>
-        <vendor>AUS</vendor>
-        <product>VG245</product>
-        <serial>HALMQS053400</serial>
-      </monitorspec>
-      <mode>
-        <width>1920</width>
-        <height>1080</height>
-        <rate>75.001</rate>
-      </mode>
-    </monitor>
-  </logicalmonitor>
-  <logicalmonitor>
-    <x>1920</x>
-    <y>0</y>
-    <scale>1</scale>
-    <monitor>
-      <monitorspec>
-        <connector>DP-2</connector>
-        <vendor>SAM</vendor>
-        <product>SAMSUNG</product>
-        <serial>0x00000001</serial>
-      </monitorspec>
-      <mode>
-        <width>1920</width>
-        <height>1080</height>
-        <rate>60.000</rate>
-      </mode>
-    </monitor>
-  </logicalmonitor>
-</configuration>
+<monitors version="2">
+  <configuration>
+    <layoutmode>physical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>1080</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-3</connector>
+          <vendor>AUS</vendor>
+          <product>VG245</product>
+          <serial>J9LMQS074822</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>75.001</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>1920</x>
+      <y>1080</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1</connector>
+          <vendor>AUS</vendor>
+          <product>VG245</product>
+          <serial>HALMQS053400</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>75.001</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>1920</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-2</connector>
+          <vendor>SAM</vendor>
+          <product>SAMSUNG</product>
+          <serial>0x00000001</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <logicalmonitor>
+      <x>1920</x>
+      <y>0</y>
+      <scale>1.5</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-2</connector>
+          <vendor>MSI</vendor>
+          <product>MPG322UX OLED</product>
+          <serial>0x01010101</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>2160</height>
+          <rate>119.999</rate>
+          <ratemode>variable</ratemode>
+        </mode>
+        <colormode>bt2100</colormode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>360</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-3</connector>
+          <vendor>AUS</vendor>
+          <product>VG245</product>
+          <serial>J9LMQS074822</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
   <configuration>
     <layoutmode>logical</layoutmode>
     <logicalmonitor>
@@ -95,7 +138,8 @@
       </monitor>
     </logicalmonitor>
     <logicalmonitor>
-      <x>1920</x>                                                                                                                                               <y>1080</y>
+      <x>1920</x>
+      <y>1080</y>
       <scale>1</scale>
       <primary>yes</primary>
       <monitor>
@@ -108,7 +152,68 @@
         <mode>
           <width>1920</width>
           <height>1080</height>
-          <rate>75.001</rate>                                                                                                                                     </mode>
+          <rate>75.001</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>1394</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-3</connector>
+          <vendor>AUS</vendor>
+          <product>VG245</product>
+          <serial>J9LMQS074822</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>75.001</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>1920</x>
+      <y>1080</y>
+      <scale>1.5</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-2</connector>
+          <vendor>MSI</vendor>
+          <product>MPG322UX OLED</product>
+          <serial>0x01010101</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>2160</height>
+          <rate>119.999</rate>
+          <ratemode>variable</ratemode>
+        </mode>
+        <colormode>bt2100</colormode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>2617</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1</connector>
+          <vendor>SAM</vendor>
+          <product>SAMSUNG</product>
+          <serial>0x00000001</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.000</rate>
+        </mode>
       </monitor>
     </logicalmonitor>
   </configuration>
