@@ -11,6 +11,15 @@ in {
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
+      Macs = [
+        # Default
+        "hmac-sha2-512-etm@openssh.com"
+        "hmac-sha2-256-etm@openssh.com"
+        "umac-128-etm@openssh.com"
+
+        # Added
+        "hmac-sha2-256"
+      ];
     };
 
     hostKeys = [
@@ -28,6 +37,7 @@ in {
       extraHostNames =
         [
           "${hostname}.thestachelfisch.dev"
+          "${hostname}"
         ]
         ++ (lib.optional (hostname == config.networking.hostName) "localhost");
     });

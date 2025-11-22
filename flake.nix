@@ -183,7 +183,7 @@
           description = "Remote Machines Managed exclusively remotely";
           nixpkgs = pkgsForStable.x86_64-linux;
           nodeNixpkgs = {
-            malachite = pkgsForStable.aarch64-linux;
+            gen-fra1-arm-srv-oci-02 = pkgsForStable.aarch64-linux;
             gen-fra1-arm-srv-oci-03 = pkgsForStable.aarch64-linux;
             printy = pkgsFor.aarch64-linux;
           };
@@ -193,9 +193,9 @@
           };
         };
 
-        malachite = {
+        gen-fra1-arm-srv-oci-02 = {
           deployment = {
-            targetHost = "malachite.thestachelfisch.dev";
+            targetHost = "gen-fra1-arm-srv-oci-02";
             targetUser = "thestachelfisch";
             buildOnTarget = true;
 
@@ -203,13 +203,13 @@
           };
 
           imports = [
-            ./hosts/server/malachite
+            ./hosts/server/gen-fra1-arm-srv-oci-02
           ];
         };
 
         gen-fra1-arm-srv-oci-03 = {
           deployment = {
-            targetHost = "gen-fra1-arm-srv-oci-03.thestachelfisch.dev";
+            targetHost = "gen-fra1-arm-srv-oci-03";
             targetUser = "thestachelfisch";
             buildOnTarget = true;
 
@@ -224,9 +224,8 @@
       # Voron 2.4 3d-printer
       printy = {
         deployment = {
-          targetHost = "printy.thestachelfisch.dev";
+          targetHost = "printy";
           targetUser = "thestachelfisch";
-          targetPort = 23;
           buildOnTarget = true;
 
           tags = ["arm" "device"];

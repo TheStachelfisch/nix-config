@@ -12,6 +12,8 @@
       ssh-to-age
       gnupg
       age
+
+      cloudflared
     ];
   };
 }
