@@ -65,6 +65,11 @@ in {
   services.fwupd.enable = true;
   services.libinput.enable = true;
 
+  fonts.packages = with pkgs; [
+    poppins
+    raleway
+  ];
+
   boot.plymouth = {
     theme = "lone";
     themePackages = with pkgs; [
@@ -117,6 +122,8 @@ in {
     keepassxc
     wineWowPackages.waylandFull
 
+    vulkan-hdr-layer-kwin6
+
     pkgs.inputs.colmena.colmena
     # inputs.colmena.packages.x86_64-linux.colmena
 
@@ -139,9 +146,9 @@ in {
     })
   ];
 
-  environment.sessionVariables = {
-    FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
-  };
+  # environment.sessionVariables = {
+  #   FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+  # };
 
   services.flatpak.enable = true;
 
@@ -163,7 +170,10 @@ in {
 
   # TODO: Move to dedicated option for gaming peripherals
   hardware.xone.enable = true;
-  programs.gamescope.enable = true;
+  programs.gamescope = {
+    enable = true;
+    # capSysNice = true;
+  };
   programs.gamemode = {
     enable = true;
     settings = {
@@ -178,6 +188,20 @@ in {
 
   programs.steam = {
     enable = true;
+    package = pkgs.steam.override {
+      extraPkgs = pkgs': with pkgs'; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib # Provides libstdc++.so.6
+        libkrb5
+        keyutils
+      ];
+    };
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
