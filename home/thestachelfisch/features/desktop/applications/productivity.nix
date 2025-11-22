@@ -16,7 +16,6 @@
     figma-linux
     zotero
     zoom-us
-    papers
     dialect
     libreoffice-qt6-fresh
     bottles
