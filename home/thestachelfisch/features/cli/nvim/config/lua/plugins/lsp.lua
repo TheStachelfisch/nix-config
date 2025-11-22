@@ -161,6 +161,7 @@ return {
         ruff = { },
         basedpyright = { },
         phpactor = { },
+        prismals = { },
       },
     },
     config = function(_, opts)
