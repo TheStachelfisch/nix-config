@@ -4,6 +4,8 @@
     dolphin-emu
     inputs.eden.packages.${pkgs.system}.eden
 
+    alsa-oss
+
     (prismlauncher.override {
       gamemodeSupport = true;
 
@@ -15,19 +17,13 @@
 
         graalvm-ce-23 = oldPkgsGraal.graalvm-ce;
       in [
-        graalvm-ce-23
+        graalvmPackages.graalvm-ce
+        zulu23
         zulu17
       ];
 
-      additionalPrograms = let
-        oldPkgsGamescope = import (builtins.fetchTarball {
-          url = "https://github.com/NixOS/nixpkgs/archive/c5dd43934613ae0f8ff37c59f61c507c2e8f980d.tar.gz";
-          sha256 = "sha256:1cpw3m45v7s7bm9mi750dkdyjgd2gp2vq0y7vr3j42ifw1i85gxv";
-        }) {inherit (pkgs) system;};
-
-        gamescope-old = oldPkgsGamescope.gamescope;
-      in [
-        gamescope-old
+      additionalPrograms = with pkgs; [ 
+        gamescope
         mangohud
         alsa-oss
       ];
