@@ -18,7 +18,7 @@
         graalvm-ce-23 = oldPkgsGraal.graalvm-ce;
       in [
         graalvmPackages.graalvm-ce
-        zulu23
+        zulu25
         zulu17
       ];
 
