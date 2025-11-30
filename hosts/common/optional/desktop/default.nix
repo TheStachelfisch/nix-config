@@ -8,6 +8,10 @@
     };
   };
 
+  fonts.packages = with pkgs; [
+    maple-mono.NF-unhinted
+  ];
+
   services.printing = {
     enable = true;
     drivers = with pkgs; [
