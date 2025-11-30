@@ -13,19 +13,14 @@
     enable = true;
     mutableConfig = true;
     configFile = ./configs/printer.cfg;
-    configDir = "/var/lib/moonraker/config";
+    configDir = config.services.moonraker.stateDir + "/config";
     user = config.services.moonraker.user;
     group = config.services.moonraker.group;
 
     firmwares = {
       btt-octopus = {
-<<<<<<< HEAD
         enable = false;
-        configFile = ./configs/btt-octopus-firmware.cfg;   
-=======
-        enable = true;
         configFile = ./configs/btt-octopus-firmware.cfg;
->>>>>>> 64359ca150e19978b186b6726af42930ab38df6d
       };
 
       btt-sb2209-rp2040 = {
@@ -72,8 +67,23 @@
           "localhost"
         ];
       };
-
       octoprint_compat = {};
+      file_manager = {};
+      machine = {
+        validate_service = false;
+      };
+      "power printer" = {
+        type = "homeassistant";
+        on_when_job_queued = true;
+        locked_while_printing = true;
+        bound_services = "klipper";
+        
+        address = "homeassistant.thestachelfisch.dev";
+        protocol = "https";
+        port = "443";
+        token = "\{secrets.homeassistant.token\}";
+        device = "switch.voron_3d_drucker";
+      };
     };
   };
 
@@ -90,4 +100,11 @@
   services.nginx.clientMaxBodySize = "50m";
 
   networking.firewall.allowedTCPPorts = [80 443 config.services.moonraker.port];
+
+  sops.secrets."moonraker.secrets" = {
+    sopsFile = ../../printy_secrets.ini;
+    format = "ini";
+    path = config.services.moonraker.stateDir + "/moonraker.secrets";
+    owner = config.services.moonraker.user;
+  };
 }
