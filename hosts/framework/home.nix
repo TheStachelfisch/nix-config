@@ -11,4 +11,14 @@
     powerline-symbols
     nerd-fonts.symbols-only
   ];
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhsWithPackages (
+      ps: with ps; [
+        nodejs_20
+        jdk25
+      ]
+    );
+  };
 }
