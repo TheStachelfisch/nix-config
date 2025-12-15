@@ -1,4 +1,4 @@
-{pkgs, inputs, ...}: {
+{pkgs, ...}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -29,6 +29,17 @@
       ruff # Python LSP
       phpactor # PHP LSP
       prisma-language-server # Prisma
+      vscode-langservers-extracted # CSS, HTML, JSON etc.
+
+      # Formatters
+      stylua # Lua
+      php84Packages.php-cs-fixer # PHP formatter
+
+      # Linters
+      biome # Web formatter & linter
+      sqlfluff # SQL linter & formatter
+      statix # Nix
+      php84Packages.php-codesniffer
     ];
     extraLuaPackages = ps: with ps; [
       magick
@@ -49,8 +60,8 @@
     jupytext # Needs to be in PATH
   ];
 
-  xdg.configFile.nvim = {
-    source = ./config;
-    recursive = true;
-  };
+  # xdg.configFile.nvim = {
+  #   source = ./config;
+  #   recursive = true;
+  # };
 }
