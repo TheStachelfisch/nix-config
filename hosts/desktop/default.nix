@@ -54,6 +54,8 @@ in {
 
     ../common/optional/desktop
     ../common/optional/desktop/gnome.nix
+
+    ../common/optional/full-system-virtualization.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
