@@ -10,6 +10,9 @@
 
   fonts.packages = with pkgs; [
     maple-mono.NF-unhinted
+    raleway
+    vista-fonts
+    corefonts
   ];
 
   services.printing = {
