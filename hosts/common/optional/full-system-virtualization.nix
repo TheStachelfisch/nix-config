@@ -8,6 +8,8 @@
     "virbr0"
   ];
 
+  systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
+
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -17,5 +19,5 @@
     };
     spiceUSBRedirection.enable = true;
   };
-  programs.virt-manager.enable = true;
+  # programs.virt-manager.enable = true;
 }
