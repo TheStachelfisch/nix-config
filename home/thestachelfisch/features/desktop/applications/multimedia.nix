@@ -1,12 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # (jellyfin-media-player.override {
-    #   mpv = mpv.override {
-    #     scripts = with pkgs.mpvScripts; [
-    #       mpris
-    #     ];
-    #   };
-    # })
+    jellyfin-desktop
   ];
 
   home.file.".local/share/jellyfinmediaplayer/scripts/mpris.so" = {
