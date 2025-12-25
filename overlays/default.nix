@@ -38,15 +38,16 @@ in {
 
   # Modifies existing packages
   modifications = final: prev: {
-    keepassxc = prev.keepassxc.overrideAttrs (oldAttrs: {
-      src = prev.fetchFromGitHub {
-        owner = "keepassxreboot";
-        repo = "keepassxc";
-        rev = "f4b91c17a9bcaf465382ee8f10e08005dd97cbf9";
-        hash = "sha256-qexPsZwcTnHB6nminAc6P5xqde7yBi+DglzuwEZjzYM=";
-      };
-      buildInputs = oldAttrs.buildInputs ++ [final.keyutils];
-    });
+    # keepassxc = prev.keepassxc.overrideAttrs (oldAttrs: {
+    #   version = "master";
+    #   src = prev.fetchFromGitHub {
+    #     owner = "keepassxreboot";
+    #     repo = "keepassxc";
+    #     rev = "592d553ff82f484949371ce4d718e7a85b4af7df";
+    #     hash = "sha256-+s3nMhajS+ceqte52D5Gn++uy8CXFHPWL6SJ5y5Ed9Y=";
+    #   };
+    #   buildInputs = oldAttrs.buildInputs ++ [final.keyutils];
+    # });
 
     mpv-unwrapped = prev.mpv-unwrapped.override {
       libplacebo = final.libplacebo-mpv;
