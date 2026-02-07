@@ -22,4 +22,9 @@
       cups-browsed
     ];
   };
+
+  programs.ausweisapp = {
+    enable = true;
+    openFirewall = true;
+  };
 }
