@@ -5,7 +5,9 @@
 }: {
   services.cage = {
     enable = true;
+    package = pkgs.cage-patched;
     user = config.services.moonraker.user;
-    program = "${pkgs.klipperscreen}/bin/KlipperScreen -c /etc/klipperscreen/KlipperScreen.conf";
+    extraArguments = [ "-d" ];
+    program = "${pkgs.klipperscreen}/bin/KlipperScreen -c /etc/klipperscreen/KlipperScreen.conf -l /var/log/KlipperScreen/KlipperScreen.log";
   };
 }

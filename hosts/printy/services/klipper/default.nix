@@ -34,6 +34,15 @@
     enable = lib.mkForce true;
     wait-online.enable = false;
     networks."can" = {
+      networkConfig = {
+        Description = "Default CANBus network";
+        DHCP = "no";
+        IPv6AcceptRA = "no";
+      };
+      linkConfig = {
+        RequiredForOnline = "no";
+        Unmanaged = "yes";
+      };
       matchConfig = {
         Name = "can*";
       };
@@ -44,9 +53,27 @@
         ''
           [CAN]
           BitRate=1M
+          RestartSec=0
         '';
     };
   };
+
+  systemd.services."setup-can0" = {
+    description = "Configure can0 interface";
+    after = [ "network-pre.target" ];
+    wants = [ "network-pre.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = [
+        "${pkgs.iproute2}/bin/ip link set can0 up"
+      ];
+      ExecStop = "${pkgs.iproute2}/bin/ip link set can0 down";
+    };
+  };
+
   services.udev.extraRules =
     /*
     udev
@@ -63,6 +90,7 @@
     settings = {
       authorization = {
         trusted_clients = [
+          "100.64.0.0/10"
           "10.0.0.0/24"
           "localhost"
         ];
@@ -77,7 +105,6 @@
         on_when_job_queued = true;
         locked_while_printing = true;
         bound_services = "klipper";
-        
         address = "homeassistant.thestachelfisch.dev";
         protocol = "https";
         port = "443";
@@ -89,7 +116,7 @@
 
   services.mainsail = {
     enable = true;
-    hostName = config.networking.hostName + ".thestachelfisch.dev";
+    hostName = config.networking.hostName;
     nginx = {
       # useACMEHost = "thestachelfisch.dev";
       kTLS = true;
@@ -98,8 +125,6 @@
 
   # For large gcode files
   services.nginx.clientMaxBodySize = "50m";
-
-  networking.firewall.allowedTCPPorts = [80 443 config.services.moonraker.port];
 
   sops.secrets."moonraker.secrets" = {
     sopsFile = ../../printy_secrets.ini;
