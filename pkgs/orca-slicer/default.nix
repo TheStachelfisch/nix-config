@@ -40,6 +40,7 @@
   wxGTK31,
   libx11,
   libnoise,
+  draco,
   withSystemd ? stdenv.hostPlatform.isLinux,
 }:
 let
@@ -48,13 +49,18 @@ let
       withCurl = true;
       withPrivateFonts = true;
       withWebKit = true;
+      withEGL = false;
     }).overrideAttrs
       (old: {
+      buildInputs = old.buildInputs ++ [ libsecret ];
         configureFlags = old.configureFlags ++ [
           # Disable noisy debug dialogs
           "--enable-debug=no"
         ];
       });
+  glew' = glew.override {
+    enableEGL = false;
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "orca-slicer";
@@ -64,7 +70,7 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "OrcaSlicer";
     repo = "OrcaSlicer";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-RdMBx/onLq58oI1sL0cHmF2SGDfeI9KkPPCbjyMqECI=";
+    hash = "sha256-6qPnHedcfUxst/OwZ/QUpPCsF9y00FtDaMcd9fo3wDI=";
   };
 
   nativeBuildInputs = [
@@ -72,10 +78,12 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
     wrapGAppsHook3
     wxGTK'
+    glew'
   ];
 
   buildInputs = [
     binutils
+    glew'
     (boost187.override {
       enableShared = true;
       enableStatic = false;
@@ -94,7 +102,6 @@ stdenv.mkDerivation (finalAttrs: {
     expat
     ffmpeg
     gcc-unwrapped
-    glew
     glfw
     glib
     glib-networking
@@ -119,6 +126,7 @@ stdenv.mkDerivation (finalAttrs: {
     libx11
     opencv.cxxdev
     libnoise
+    draco
   ]
   ++ lib.optionals withSystemd [ systemd ]
   ++ finalAttrs.checkInputs;
@@ -136,11 +144,6 @@ stdenv.mkDerivation (finalAttrs: {
       name = "pr-7650-configurable-update-check.patch";
       url = "https://github.com/SoftFever/OrcaSlicer/commit/d10a06ae11089cd1f63705e87f558e9392f7a167.patch";
       hash = "sha256-t4own5AwPsLYBsGA15id5IH1ngM0NSuWdFsrxMRXmTk=";
-    })
-    (fetchpatch {
-      name = "pr-11518-update-glfw-lib.patch";
-      url = "https://patch-diff.githubusercontent.com/raw/OrcaSlicer/OrcaSlicer/pull/11518.patch";
-      hash = "sha256-v+ORQblVtSREjT+5kzHhzJ1stdwtQ/fZKYcC+QRJiGU=";
     })
   ];
 
@@ -172,6 +175,7 @@ stdenv.mkDerivation (finalAttrs: {
         "-DBOOST_MATH_MAX_FLOAT128_DIGITS=0"
         "-DBOOST_CSTDFLOAT_NO_LIBQUADMATH_SUPPORT"
         "-DBOOST_MATH_DISABLE_FLOAT128_BUILTIN_FPCLASSIFY"
+        "-DwxUSE_GLCANVAS_EGL=OFF"
       ]
       # Making it compatible with GCC 14+, see https://github.com/SoftFever/OrcaSlicer/pull/7710
       ++ lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "14") [
@@ -204,7 +208,7 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeFeature "CMAKE_EXE_LINKER_FLAGS" "-Wl,--no-as-needed")
     (lib.cmakeBool "ORCA_VERSION_CHECK_DEFAULT" false)
     (lib.cmakeFeature "LIBNOISE_INCLUDE_DIR" "${libnoise}/include/noise")
-    (lib.cmakeFeature "LIBNOISE_LIBRARY" "${libnoise}/lib/libnoise-static.a")
+    (lib.cmakeFeature "LIBNOISE_LIBRARY_RELEASE" "${libnoise}/lib/libnoise-static.a")
     "-Wno-dev"
   ];
 
@@ -218,7 +222,6 @@ stdenv.mkDerivation (finalAttrs: {
           glew
         ]
       }"
-      --set WEBKIT_DISABLE_COMPOSITING_MODE 1
     )
   '';
 
