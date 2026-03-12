@@ -41,13 +41,15 @@
   gtk = {
     enable = true;
     theme = {
-      # name = "adw-gtk${
-      #   if config.dconf.settings."org/gnome/desktop/interface".color-scheme == "prefer-dark"
-      #   then "-dark"
-      #   else ""
-      # }";
       name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
+    };
+    gtk4 = {
+      enable = true;
+      extraConfig = {
+        gtk-hint-font-metrics = true;
+        gtk-font-rendering = "manual";
+      };
     };
   };
 
