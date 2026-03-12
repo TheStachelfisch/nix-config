@@ -54,6 +54,4 @@
   services.gnome.gnome-keyring.enable = true;
   # Use standard SSH agent
   services.gnome.gcr-ssh-agent.enable = false;
-  # If the desktop is unlocked using fprintd, then the login process hangs for a bit as the keyring can't be unlocked initially using the fingerprint
-  security.pam.services.gdm.enableGnomeKeyring = !config.services.fprintd.enable;
 }
