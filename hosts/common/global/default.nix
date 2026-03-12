@@ -8,4 +8,6 @@
     ./networking.nix
     ./tailscale.nix
   ];
+
+  programs.nano.enable = false;
 }
