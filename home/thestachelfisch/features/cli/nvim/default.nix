@@ -15,8 +15,6 @@
       fd
       fzf
 
-      imagemagick
-
       # Language Server
       lua-language-server # Lua
       nil # Nix
@@ -37,28 +35,11 @@
 
       # Linters
       biome # Web formatter & linter
-      sqlfluff # SQL linter & formatter
+      # sqlfluff # SQL linter & formatter
       statix # Nix
-      php84Packages.php-codesniffer
-    ];
-    extraLuaPackages = ps: with ps; [
-      magick
-    ];
-    extraPython3Packages = ps: with ps; [
-      pynvim
-      jupyter-client
-      cairosvg
-      ipython
-      nbformat
-      plotly
-      kaleido
-      pyperclip
+      # php84Packages.php-codesniffer
     ];
   };
-
-  home.packages = with pkgs.python313Packages; [
-    jupytext # Needs to be in PATH
-  ];
 
   # xdg.configFile.nvim = {
   #   source = ./config;
