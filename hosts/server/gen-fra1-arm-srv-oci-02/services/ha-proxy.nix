@@ -13,8 +13,12 @@
 
       locations = {
         "/" = {
-          proxyPass = "http://home.j3dpd.com:8123";
+          proxyPass = "http://$target_host:8123";
           proxyWebsockets = true;
+          extraConfig = ''
+            resolver 8.8.8.8 valid=1m;
+            set $target_host home.j3dpd.com ;
+          '';
         };
       };
     };
