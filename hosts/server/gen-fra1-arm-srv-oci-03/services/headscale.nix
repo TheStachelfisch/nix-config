@@ -11,8 +11,7 @@
       server_url = "https://headscale.thestachelfisch.dev";
       dns = {
         base_domain = "ts.thestachelfisch.dev";
-        magic_dns = true;
-        nameservers.global = ["1.1.1.1" "1.0.0.1"];
+        override_local_dns = false;
       };
       prefixes = {
         v4 = "100.64.0.0/10";
