@@ -1,5 +1,27 @@
 { pkgs, ... }: {
-  fonts.fontDir.enable = true;
+  fonts = {
+    fontDir.enable = true;
+    fontconfig = {
+      enable = true;
+      antialias = true;
+      subpixel ={
+        rgba = "none";
+      };
+
+      hinting = {
+        enable = true;
+        autohint = false;
+        style = "slight";
+      };
+
+      allowBitmaps = false;
+
+      defaultFonts = {
+        monospace = [ "Maple Mono NF" ];
+      };
+    };
+  };
+
   documentation = {
     dev.enable = true;
     man = {
