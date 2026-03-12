@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     jellyfin-desktop
+    spotify
   ];
 
   home.file.".local/share/jellyfinmediaplayer/scripts/mpris.so" = {
