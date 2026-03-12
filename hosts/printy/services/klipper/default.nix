@@ -36,8 +36,6 @@
     networks."can" = {
       networkConfig = {
         Description = "Default CANBus network";
-        DHCP = "no";
-        IPv6AcceptRA = "no";
       };
       linkConfig = {
         RequiredForOnline = "no";
@@ -53,7 +51,6 @@
         ''
           [CAN]
           BitRate=1M
-          RestartSec=0
         '';
     };
   };
@@ -68,7 +65,7 @@
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = [
-        "${pkgs.iproute2}/bin/ip link set can0 up"
+        "${pkgs.iproute2}/bin/ip link set can0 up type can bitrate 1000000"
       ];
       ExecStop = "${pkgs.iproute2}/bin/ip link set can0 down";
     };
