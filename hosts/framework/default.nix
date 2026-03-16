@@ -52,7 +52,7 @@
   environment.systemPackages = with pkgs; [
     keepassxc
     nur.repos.ataraxiasjel.waydroid-script
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
 
     pkgs.inputs.colmena.colmena
     # inputs.colmena.packages.x86_64-linux.colmena

@@ -92,7 +92,7 @@ in
 
   environment.systemPackages = with pkgs; [
     keepassxc
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
 
     vulkan-hdr-layer-kwin6
 
