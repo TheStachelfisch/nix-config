@@ -28,6 +28,8 @@
       phpactor # PHP LSP
       prisma-language-server # Prisma
       vscode-langservers-extracted # CSS, HTML, JSON etc.
+      clang-tools # clangd
+      rust-analyzer # Rust
 
       # Formatters
       stylua # Lua

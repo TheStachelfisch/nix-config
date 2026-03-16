@@ -189,6 +189,22 @@ return {
 						provideFormatter = false,
 					},
 				},
+				clangd = {
+					root_markers = {
+						"compile_commands.json",
+						"compile_flags.txt",
+						"configure.ac", -- AutoTools
+						"Makefile",
+						"configure.ac",
+						"configure.in",
+						"config.h.in",
+						"meson.build",
+						"meson_options.txt",
+						"build.ninja",
+						".git",
+					},
+				},
+				rust_analyzer = {},
 			},
 		},
 		config = function(_, opts)
@@ -315,5 +331,28 @@ return {
 		"b0o/SchemaStore.nvim",
 		lazy = true,
 		version = false, -- last release is way too old
+	},
+	{
+		"Saecki/crates.nvim",
+		event = { "BufRead Cargo.toml" },
+		opts = {
+			completion = {
+				crates = {
+					enabled = true,
+				},
+			},
+			lsp = {
+				enabled = true,
+				actions = true,
+				completion = true,
+				hover = true,
+			},
+		},
+	},
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^8",
+		lazy = false,
+		ft = { "rust" },
 	},
 }
