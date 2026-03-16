@@ -1,4 +1,8 @@
-{pkgs, lib, config, ...}:
+{pkgs, lib, config, ...}: let
+  hid-module = pkgs.callPackage ./hid-module/hid-module.nix {
+    inherit (config.boot.kernelPackages) kernel;
+  };
+in
 {
   imports = [
     # Hardware imports
@@ -20,6 +24,11 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.extraModulePackages = [
+    (hid-module.overrideAttrs (_: {
+      patches = [ ./hid-module/hs-pro.patch ];
+    }))
+  ];
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   programs.nix-ld.enable = true;
