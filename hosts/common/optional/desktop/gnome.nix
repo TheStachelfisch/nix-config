@@ -10,7 +10,12 @@
   ];
 
   services.desktopManager.gnome.enable = true;
-  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = false;
+
+  services.displayManager.ly = {
+    enable = true;
+    x11Support = false;
+  };
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
