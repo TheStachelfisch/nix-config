@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   FIREFLY_PORT = 8961;
 in 
@@ -6,6 +6,7 @@ in
   services.firefly-iii = {
     enable = true;
     enableNginx = true;
+    package = pkgs.unstable.firefly-iii;
     settings = {
       SITE_OWNER = "contact@thestachelfisch.dev";
       APP_URL = "https://firefly.thestachelfisch.dev/";

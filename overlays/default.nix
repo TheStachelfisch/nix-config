@@ -29,6 +29,10 @@ in {
     stable = inputs.nixpkgs-stable.legacyPackages.${final.system};
   };
 
+  unstable = final: _: {
+    unstable = inputs.nixpkgs.legacyPackages.${final.system};
+  };
+
   # Adds additional custom packages
   additions = final: prev:
     import ../pkgs {pkgs = final;}
