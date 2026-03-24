@@ -4,7 +4,7 @@
   ];
 
   services.jellyfin = {
-    enable = true;
+    enable = false;
   };
 
   users.users.jellyfin.extraGroups = [config.users.groups.mass-storage.name];
