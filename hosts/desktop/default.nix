@@ -101,12 +101,12 @@ in
 
     moonlight-qt
 
-    lsfg-vk
+    # lsfg-vk
     vulkan-tools
 
     distrobox
 
-    orca-slicer
+    # orca-slicer
 
     (pkgs.heroic.override {
       extraPkgs = pkgs:
