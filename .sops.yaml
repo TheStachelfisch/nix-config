@@ -1,0 +1,15 @@
+keys:
+  # Users
+  - &users:
+    - &thestachelfisch BAD3CD149697F0C7B922824FACA965618087B276
+  # Hosts
+  - &hosts:
+    - &desktop age1rw89km8dmplek2hs2p6awvm5cgscl2m9sxgsn5asc9mdg2z2qfgqmu59rs
+
+creation_rules:
+  - path_regex: secrets/user-secrets.ini
+    key_groups:
+    - age:
+      - *desktop
+      pgp:
+      - *thestachelfisch
