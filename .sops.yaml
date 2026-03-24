@@ -1,0 +1,35 @@
+keys:
+  # Users
+  - &users:
+    - &thestachelfisch BAD3CD149697F0C7B922824FACA965618087B276
+  # Hosts
+  - &hosts:
+    - &framework age16uzpcjqa8mhqfcufzsq8gf66e9l34rv6dslt7s2r7h5td5d34eqq5nzuwd
+    - &desktop age1rw89km8dmplek2hs2p6awvm5cgscl2m9sxgsn5asc9mdg2z2qfgqmu59rs
+    - &wsl age18cqhxtw6z7v4dap54swa66pvwep2wk32z30f5nfqzl74uxcmp4rslkkn5e
+    - &gen-fra1-arm-srv-oci-02 age1wgwxysjvqucy0a94aslwjpshftqagv66xjj0u0hx340ns2sjeevs70s2my
+    - &gen-fra1-arm-srv-oci-03 age1cnqyakh3k5apewgf054cz7v3nl2yjqtmwqla3e45s7kd0rd6yu0sghxgcr
+    - &printy age1uavxucnt2946z80964xqth4hl6sgpahypj6ch9c82wd93kvchuvsgneq0k
+
+creation_rules:
+  - path_regex: secrets/user-secrets.ini
+    key_groups:
+    - age:
+      - *framework
+      - *desktop
+      - *wsl
+      - *gen-fra1-arm-srv-oci-02
+      - *gen-fra1-arm-srv-oci-03
+      - *printy
+      pgp:
+      - *thestachelfisch
+  - path_regex: hosts/printy/printy_secrets.ini
+    key_groups:
+    - age:
+      - *printy
+      pgp:
+        - *thestachelfisch
+  - path_regex: home/thestachelfisch/secrets.ya?ml$
+    key_groups:
+    - pgp:
+      - *thestachelfisch
