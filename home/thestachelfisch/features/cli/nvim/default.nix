@@ -17,7 +17,7 @@
 
       # Language Server
       lua-language-server # Lua
-      nil # Nix
+      nixd # Nix
       zls_0_15 # ZIG
       vtsls # Typescript
       vue-language-server # Vue
@@ -34,6 +34,7 @@
       # Formatters
       stylua # Lua
       php84Packages.php-cs-fixer # PHP formatter
+      nixfmt # Nix
 
       # Linters
       biome # Web formatter & linter

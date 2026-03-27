@@ -81,11 +81,11 @@ return {
 						},
 					},
 				},
-				nil_ls = {
+				nixd = {
 					settings = {
-						["nil"] = {
-							flake = {
-								nixpkgsInputName = "nixpkgs",
+						nixd = {
+							formatting = {
+								command = { "nixfmt" },
 							},
 						},
 					},
