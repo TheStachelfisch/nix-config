@@ -65,7 +65,7 @@ in
     enable = true;
     keyboards = {
       corsair = {
-        ids = ["1b1c:1b49:3d584d68"];
+        ids = ["1b1c:1b49:857532cb"];
         settings = {
           main = {
             esc = "overload(capslock, esc)";
