@@ -5,7 +5,14 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    withNodeJs = true;
+    initLua = ''
+        require("config.lazy")
+	require("config.options")
+    '';
+
+    withNodeJs = false;
+    withRuby = false;
+    withPython3 = false;
     extraPackages = with pkgs; [
       # Required for Treesitter
       gcc
