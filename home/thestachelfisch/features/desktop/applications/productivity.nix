@@ -18,7 +18,8 @@
     zoom-us
     dialect
     libreoffice-qt6-fresh
-    bottles
+    # TODO: Enable again once https://github.com/NixOS/nixpkgs/pull/515956 hits master
+    # bottles
     # (pkgs.citrix_workspace.override {
     #  libvorbis = pkgs.libvorbis.override {
     #    libogg = pkgs.libogg.overrideAttrs (prevAttrs: {
@@ -169,7 +170,6 @@
   services.psd = {
     enable = true;
     browsers = ["firefox" "chromium"];
-    useBackup = false;
     backupLimit = 10;
   };
 }
