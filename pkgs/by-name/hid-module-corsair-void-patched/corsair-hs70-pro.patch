@@ -1,0 +1,14 @@
+diff --git a/drivers/hid/hid-corsair-void.c b/drivers/hid/hid-corsair-void.c
+index 5e9a5b8f7f16..4ad518b0ffdd 100644
+--- a/drivers/hid/hid-corsair-void.c
++++ b/drivers/hid/hid-corsair-void.c
+@@ -812,6 +812,9 @@ static const struct hid_device_id corsair_void_devices[] = {
+ 	CORSAIR_VOID_WIRED_DEVICE(0x0a53),
+ 	CORSAIR_VOID_WIRED_DEVICE(0x0a57),
+ 
++	/* Corsair HS70 Pro */
++	CORSAIR_VOID_WIRELESS_DEVICE(0x0a4f),
++
+ 	{}
+ };
+ 

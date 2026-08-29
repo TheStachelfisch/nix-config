@@ -11,8 +11,7 @@
         userDirs = {
           enable = true;
           createDirectories = true;
-          # TODO: Enable once 26.05 hits
-          # setSessionVariables = true;
+          setSessionVariables = true;
 
           music = null;
           templates = null;

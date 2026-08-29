@@ -15,18 +15,22 @@ in
         { config, ... }:
         {
           users.users.${username} = {
-            hashedPasswordFile = config.sops.secrets."user-passwords.thestachelfisch".path;
+            hashedPasswordFile = config.sops.secrets."user_passwords/thestachelfisch".path;
+            extraGroups = [ "plugdev" ];
           };
 
-          sops.secrets."user-passwords.thestachelfisch" = {
-            sopsFile = "${self.inputs.secrets}/user-secrets.ini";
-            format = "ini";
+          imports = with self.modules.nixos; [
+            nushell
+          ];
+
+          sops.secrets."user_passwords/thestachelfisch" = {
             neededForUsers = true;
           };
         };
       homeManager."${username}" = {
         imports = with self.modules.homeManager; [
           system-cli
+          nushell
         ];
       };
     }

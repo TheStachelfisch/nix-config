@@ -1,5 +1,8 @@
+{ inputs, ... }:
 {
-  flake.diskoConfigurations.nixos-desktop = {
+  flake.modules.nixos.nixos-desktop = {
+    imports = [ inputs.disko.nixosModules.disko ];
+
     disko.devices = {
       disk = {
         main = {
@@ -25,22 +28,24 @@
                 size = "100%";
                 content = {
                   type = "btrfs";
-                  mountOptions = [ "ssd" "discard=async" ];
+                  mountOptions = [
+                    "ssd"
+                    "discard=async"
+                    "compress=zstd:1"
+                    "noatime"
+                  ];
                   subvolumes = {
                     "@" = {
                       mountpoint = "/";
                     };
                     "@nix" = {
                       mountpoint = "/nix";
-                      mountOptions = [ "compress=zstd:1" "noatime" ];
                     };
                     "@home" = {
                       mountpoint = "/home";
-                      mountOptions = [ "compress=zstd" ];
                     };
                     "@log" = {
                       mountpoint = "/var/log";
-                      mountOptions = [ "compress=zstd" "noatime" ];
                     };
                     "@swap" = {
                       mountpoint = "/.swapvol";
@@ -48,7 +53,6 @@
                       swap = {
                         swapfile = {
                           size = "6G";
-                          priority = 0;
                         };
                       };
                     };

@@ -3,30 +3,38 @@
   ...
 }:
 {
-  flake.modules.nixos.system-desktop =
-    {
-      lib,
-      ...
-    }:
-    {
-      imports = with inputs.self.modules.nixos; [
-        system-cli
+  flake.modules.nixos.system-desktop = {
+    imports = with inputs.self.modules.nixos; [
+      system-cli
 
-        colemak-keyboard
-        ssh
-        xdg
-        pipewire
-        networkmanager
-      ];
+      wayland-pipewire-idle-inhibit
 
-      time.timeZone = "Europe/Berlin";
-    };
+      colemak-keyboard
+      ssh
+      gpg
+      xdg
+      pipewire
+      networkmanager
+      keyd
+      flatpak
+    ];
+
+    time.timeZone = "Europe/Berlin";
+  };
 
   flake.modules.homeManager.system-desktop = {
     imports = with inputs.self.modules.homeManager; [
       system-cli
 
       xdg
+      gpg
+      git
+
+      terminal
+      browser
+      keepassxc
+      vesktop
+      neovim
     ];
   };
 }

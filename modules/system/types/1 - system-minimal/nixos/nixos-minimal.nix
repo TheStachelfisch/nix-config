@@ -4,10 +4,19 @@
 }:
 {
   flake.modules.nixos.system-minimal =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       nixpkgs = {
         config.allowUnfree = true;
+        overlays = [
+          inputs.nur.overlays.default
+          (_final: _prev: {
+            unstable = import inputs.nixpkgs-unstable {
+              system = pkgs.stdenv.hostPlatform.system;
+              config = config.nixpkgs.config;
+            };
+          })
+        ];
       };
       system.stateVersion = "26.05";
 
@@ -15,6 +24,12 @@
 
       nix = {
         channel.enable = false;
+
+        registry = {
+          nixpkgs.flake = inputs.nixpkgs;
+          nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+        };
+
         settings = {
           substituters = [
             "https://cache.nixos.org?priority=10"

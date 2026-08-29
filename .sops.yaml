@@ -4,10 +4,10 @@ keys:
     - &thestachelfisch BAD3CD149697F0C7B922824FACA965618087B276
   # Hosts
   - &hosts:
-    - &desktop age1rw89km8dmplek2hs2p6awvm5cgscl2m9sxgsn5asc9mdg2z2qfgqmu59rs
+    - &desktop age1jmadx7sru2r40gnvrlyz96808tq3mzctxfdtkx0j5uc3zhjn84qqhsdsta
 
 creation_rules:
-  - path_regex: secrets/user-secrets.ini
+  - path_regex: secrets/user-secrets.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *desktop

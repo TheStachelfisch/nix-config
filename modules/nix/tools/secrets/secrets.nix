@@ -5,7 +5,7 @@
 }:
 {
   flake.modules.nixos.secrets =
-    { pkgs, config, ... }:
+    { config, ... }:
     {
       imports = [
         inputs.sops-nix.nixosModules.sops
@@ -17,7 +17,8 @@
           keys = map (k: k.path) (builtins.filter isEd25519 config.services.openssh.hostKeys);
         in
         {
-          defaultSopsFile = "${self.inputs.secrets}/user-secrets.ini";
+          defaultSopsFile = "${self.inputs.secrets}/user-secrets.yaml";
+          defaultSopsFormat = "yaml";
           age = {
             sshKeyPaths = keys;
             keyFile = "/var/lib/sops-nix/key.txt";
