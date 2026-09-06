@@ -33,7 +33,7 @@
       terminal
       browser
       keepassxc
-      vesktop
+      discord
       neovim
     ];
   };
