@@ -14,27 +14,31 @@
       ]
       ++ (with inputs.self.modules.nixos; [
         bluetooth
+        fan2go
       ]);
 
       boot.initrd.availableKernelModules = [
+        "xhci_pci_prom21"
+        "ahci"
         "nvme"
         "xhci_pci"
-        "ahci"
         "usbhid"
         "usb_storage"
         "sd_mod"
       ];
       boot.initrd.kernelModules = [ ];
-      boot.kernelModules = [ "kvm-amd" ];
-      boot.extraModulePackages = [
-        (pkgs.local.hid-module-corsair-void-patched.override {
-          kernel = config.boot.kernelPackages.kernel;
-        })
+      boot.kernelModules = [
+        "kvm-amd"
+        "nct6775"
+        "ntsync"
       ];
+      boot.extraModulePackages = [ ];
 
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
+        package = pkgs.unstable.mesa;
+        package32 = pkgs.unstable.pkgsi686Linux.mesa;
       };
 
       hardware.amdgpu = {
