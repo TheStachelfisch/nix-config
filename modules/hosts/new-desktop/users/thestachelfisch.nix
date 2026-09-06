@@ -46,6 +46,8 @@
           mangohud
           heroic
 
+          moonlight-qt
+
           (prismlauncher.override {
             jdks = [
               graalvmPackages.graalvm-ce
