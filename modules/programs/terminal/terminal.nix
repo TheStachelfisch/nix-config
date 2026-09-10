@@ -1,12 +1,13 @@
 {
   flake.modules.homeManager.terminal =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       programs.foot = {
         enable = true;
         package = pkgs.unstable.foot;
         settings = {
           main = {
+            shell = if config.programs.nushell.enable then "nu" else "$SHELL";
             font = "Maple Mono NF:size=10";
             resize-delay-ms = 0;
             resize-by-cells = "no";
