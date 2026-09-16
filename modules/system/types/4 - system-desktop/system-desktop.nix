@@ -6,6 +6,7 @@
   flake.modules.nixos.system-desktop = {
     imports = with inputs.self.modules.nixos; [
       system-cli
+      quiet-boot
 
       wayland-pipewire-idle-inhibit
 
@@ -17,6 +18,7 @@
       networkmanager
       keyd
       flatpak
+      printing
     ];
 
     time.timeZone = "Europe/Berlin";

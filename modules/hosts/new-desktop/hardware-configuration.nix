@@ -17,14 +17,14 @@
         fan2go
       ]);
 
+      boot.initrd.includeDefaultModules = false;
       boot.initrd.availableKernelModules = [
-        "xhci_pci_prom21"
-        "ahci"
-        "nvme"
         "xhci_pci"
+        "xhci_pci_prom21"
+        "nvme"
+
         "usbhid"
-        "usb_storage"
-        "sd_mod"
+        "hid_generic"
       ];
       boot.initrd.kernelModules = [ ];
       boot.kernelModules = [
