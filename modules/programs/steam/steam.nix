@@ -21,6 +21,11 @@
         capSysNice = false;
       };
 
+      hardware.graphics = {
+        extraPackages = with pkgs.unstable; [ gamescope-wsi ];
+        extraPackages32 = with pkgs.unstable; [ pkgsi686Linux.gamescope-wsi ];
+      };
+
       programs.steam = {
         enable = true;
         package = pkgs.unstable.steam;
