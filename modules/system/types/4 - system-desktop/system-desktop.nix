@@ -33,10 +33,11 @@
       git
 
       terminal
-      browser
       keepassxc
       discord
       neovim
+
+      firefox-browser
     ];
   };
 }

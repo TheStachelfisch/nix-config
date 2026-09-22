@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.browser =
+  flake.modules.homeManager.firefox-browser =
     { pkgs, ... }:
     {
       programs.firefox = {
