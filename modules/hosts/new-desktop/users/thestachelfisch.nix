@@ -48,12 +48,7 @@
 
           moonlight-qt
 
-          (prismlauncher.override {
-            jdks = [
-              graalvmPackages.graalvm-ce
-              openjdk17
-            ];
-          })
+          prismlauncher
         ];
 
         # fonts.fontconfig = {
