@@ -22,6 +22,13 @@
       networking.firewall.allowedTCPPorts = [ 25565 ];
       networking.firewall.allowedUDPPorts = [ 25565 ];
 
+      # TODO: Maybe move into separate module
+      services.avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+      };
+
       services.udev.extraRules = ''
         # TOPPING Audio USB & WebHID / WebUSB Permissions
         SUBSYSTEM=="usb", ATTR{idVendor}=="152a", MODE="0666", GROUP="users"
