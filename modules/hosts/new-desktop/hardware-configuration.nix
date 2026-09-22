@@ -33,6 +33,12 @@
         "ntsync"
       ];
       boot.extraModulePackages = [ ];
+      boot.kernelParams = [
+        "split_lock_mitigate=0"
+      ];
+      boot.kernel.sysctl = {
+        "vm.max_map_count" = 2147483642;
+      };
 
       hardware.graphics = {
         enable = true;
@@ -44,6 +50,15 @@
       hardware.amdgpu = {
         initrd.enable = true;
         overdrive.enable = true;
+      };
+
+      environment.sessionVariables = {
+        MESA_SHADER_CACHE_MAX_SIZE = "12G";
+      };
+
+      services.lact = {
+        enable = true;
+        package = pkgs.unstable.lact;
       };
 
       services.fwupd.enable = true;
@@ -169,7 +184,7 @@
               hysteresis:
                 down: 6
               steps:
-                - 0: 13%
+                - 0: 7%
                 - 68: 25%
                 - 78: 45%
                 - 85: 85%
@@ -189,11 +204,11 @@
               hysteresis:
                 down: 5
               steps:
-                - 0: 0%
-                - 55: 12%
+                - 0: 7%
+                - 60: 15%
                 - 68: 28%
                 - 78: 45%
-                - 85: 85%
+                - 85: 60%
       '';
     };
 }
