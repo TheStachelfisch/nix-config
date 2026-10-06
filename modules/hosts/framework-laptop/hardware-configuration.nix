@@ -11,6 +11,7 @@
     {
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
+        inputs.nixos-hardware.nixosModules.framework-16-7040-amd
       ]
       ++ (with inputs.self.modules.nixos; [
         bluetooth
@@ -40,7 +41,6 @@
 
       security.tpm2.enable = true;
       environment.systemPackages = [
-        pkgs.systemd-cryptenroll
         pkgs.tpm2-tools
       ];
 
