@@ -49,7 +49,10 @@
                     };
                     "@swap" = {
                       mountpoint = "/.swapvol";
-                      mountOptions = [ "noatime" ];
+                      mountOptions = [
+                        "noatime"
+                        "nodatacow"
+                      ];
                       swap = {
                         swapfile = {
                           size = "6G";
