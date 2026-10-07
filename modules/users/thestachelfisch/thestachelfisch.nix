@@ -16,6 +16,9 @@ in
         {
           users.users.${username} = {
             hashedPasswordFile = config.sops.secrets."user_passwords/thestachelfisch".path;
+            openssh.authorizedKeys.keys = [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF11N4SUplaakwU3LWzf1IcGIunXaP97vK1UXVLX3skt"
+            ];
             extraGroups = [ "plugdev" ];
           };
 
