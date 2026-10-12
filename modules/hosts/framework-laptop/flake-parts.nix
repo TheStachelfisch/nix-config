@@ -3,5 +3,9 @@
   ...
 }:
 {
-  flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "framework-laptop";
+  flake.nixosConfigurations = inputs.self.lib.mkNixos {
+    system = "x86_64-linux";
+    name = "framework-laptop";
+    channel = "unstable";
+  };
 }

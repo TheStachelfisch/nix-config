@@ -18,7 +18,7 @@
       time.timeZone = "UTC";
       boot.tmp.cleanOnBoot = true;
 
-      # Not required on servers. Removes ~300MiB
+      # Not strictly required on servers. Removes ~300MiB
       nix.registry = lib.mkForce { };
       nix.settings.flake-registry = "";
       documentation.nixos.enable = false;

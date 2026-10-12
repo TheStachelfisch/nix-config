@@ -4,18 +4,13 @@
 }:
 {
   flake.modules.nixos.system-minimal =
-    { pkgs, config, ... }:
+    { lib, ... }:
     {
       nixpkgs = {
         config.allowUnfree = true;
         overlays = [
           inputs.nur.overlays.default
-          (_final: _prev: {
-            unstable = import inputs.nixpkgs-unstable {
-              system = pkgs.stdenv.hostPlatform.system;
-              config = config.nixpkgs.config;
-            };
-          })
+          # Unstable overlay is specified in the mkNixos function
         ];
       };
       system.stateVersion = "26.05";
@@ -25,7 +20,7 @@
       nix = {
         channel.enable = false;
 
-        registry = {
+        registry = lib.mkDefault {
           nixpkgs.flake = inputs.nixpkgs;
           nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
         };
