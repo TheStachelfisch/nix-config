@@ -12,6 +12,12 @@
           unrar
           p7zip
         ];
+        environment.plasma6.excludePackages = with pkgs.kdePackages; [
+          konsole
+          plasma-browser-integration
+        ];
+
+        programs.kde-pim.enable = false;
       };
 
     homeManager.desktop-plasma = { };
