@@ -20,9 +20,9 @@
       nix = {
         channel.enable = false;
 
-        registry = lib.mkDefault {
-          nixpkgs.flake = inputs.nixpkgs;
+        registry = {
           nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+          nixpkgs-stable.flake = inputs.nixpkgs;
         };
 
         settings = {
