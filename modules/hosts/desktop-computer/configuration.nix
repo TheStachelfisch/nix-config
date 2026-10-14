@@ -13,6 +13,7 @@
         system-desktop
 
         steam
+        keyd
         waydroid
         openrgb
         personal-storagebox

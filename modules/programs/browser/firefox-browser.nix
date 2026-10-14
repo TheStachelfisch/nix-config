@@ -61,9 +61,10 @@
         };
       };
 
-      services.psd = {
-        enable = true;
-        backupLimit = 5;
-      };
+      # TODO: Enable again, when psd in nixpkgs isn't stuck at version 6.50
+      # services.psd = {
+      #   enable = true;
+      #   backupLimit = 5;
+      # };
     };
 }

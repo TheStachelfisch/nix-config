@@ -16,7 +16,6 @@
       xdg
       pipewire
       networkmanager
-      keyd
       flatpak
       printing
     ];
