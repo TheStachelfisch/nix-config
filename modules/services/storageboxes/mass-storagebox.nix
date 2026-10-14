@@ -16,19 +16,28 @@
           let
             automount_opts = lib.concatStringsSep "," [
               "_netdev"
-              "x-systemd.automount"
               "noauto"
               "nofail"
-              "x-systemd.idle-timeout=60"
-              "x-systemd.device-timeout=5s"
+              "x-systemd.automount"
+              "x-systemd.idle-timeout=600s"
+              "x-systemd.device-timeout=10s"
               "x-systemd.mount-timeout=30s"
+              "x-systemd.after=network-online.target"
+
+              "hard"
+              "echo_interval=15"
+              "multichannel"
+              "max_channels=4"
+              "rsize=4194304"
+              "wsize=4194304"
+              "actimeo=30"
             ];
-            permission_opts = "gid=${toString config.users.groups.mass-storage.gid},dir_mode=0770,file_mode=0660";
-            security_opts = "vers=3.0,seal";
+            permission_opts = "uid=0,forceuid,gid=${toString config.users.groups.mass-storage.gid},forcegid,noperm,dir_mode=0770,file_mode=0660";
+            security_opts = "vers=3.1.1,seal";
           in
           [
             "${automount_opts},${permission_opts},${security_opts},credentials=${
-              config.sops.secrets."storage_boxes/personal".path
+              config.sops.secrets."storage_boxes/mass".path
             }"
           ];
       };
