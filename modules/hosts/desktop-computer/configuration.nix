@@ -23,6 +23,8 @@
       networking.firewall.allowedTCPPorts = [ 25565 ];
       networking.firewall.allowedUDPPorts = [ 25565 ];
 
+      boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
       # TODO: Maybe move into separate module
       services.avahi = {
         enable = true;
