@@ -17,6 +17,9 @@
         desktop-plasma
       ];
 
+      # Disable fprintd for plasma login to prevent long timeout
+      security.pam.services.plasmalogin.fprintAuth = false;
+
       networking.hostName = "framework-16";
     };
 }
