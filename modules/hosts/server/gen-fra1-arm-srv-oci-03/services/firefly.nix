@@ -30,12 +30,15 @@
           };
         };
 
-        nginx.virtualHosts.${config.services.firefly-iii.virtualHost}.listen = [
-          {
-            addr = "0.0.0.0";
-            port = FIREFLY_PORT;
-          }
-        ];
+        nginx = {
+          enable = true;
+          virtualHosts.${config.services.firefly-iii.virtualHost}.listen = [
+            {
+              addr = "0.0.0.0";
+              port = FIREFLY_PORT;
+            }
+          ];
+        };
 
         cloudflared.tunnels."691ea66d-b4dd-4ec2-a4bb-0b98823eb2aa" = {
           ingress."firefly.thestachelfisch.dev" = {

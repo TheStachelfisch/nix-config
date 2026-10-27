@@ -6,6 +6,7 @@ keys:
   - &hosts:
     - &desktop-computer age1jmadx7sru2r40gnvrlyz96808tq3mzctxfdtkx0j5uc3zhjn84qqhsdsta
     - &framework-laptop age1t2qmhjfgq2lpnn3ynapfj0689ultj9kwy4akad5vftn7knppv3dql82q3e
+    - &gen-fra1-arm-srv-oci-03 age1cnqyakh3k5apewgf054cz7v3nl2yjqtmwqla3e45s7kd0rd6yu0sghxgcr
 
 creation_rules:
   - path_regex: secrets/user-secrets\.(yaml|json|env|ini)$
@@ -13,5 +14,6 @@ creation_rules:
     - age:
       - *desktop-computer
       - *framework-laptop
+      - *gen-fra1-arm-srv-oci-03
       pgp:
       - *thestachelfisch

@@ -38,6 +38,9 @@
         SUBSYSTEM=="usb", ATTR{idVendor}=="152a", MODE="0666", GROUP="users"
         SUBSYSTEM=="rawusb", ATTRS{idVendor}=="152a", MODE="0666", GROUP="users"
         KERNEL=="hidraw*", ATTRS{idVendor}=="152a", MODE="0666", GROUP="users"
+
+        # DJI Mic Mini 2 USB access
+        SUBSYSTEM=="usb", ATTRS{idVendor}=="2ca3", ATTRS{idProduct}=="4011", MODE="0666", GROUP="users"
       '';
 
       networking.hostName = "nixos-desktop";

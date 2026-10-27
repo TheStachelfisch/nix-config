@@ -35,6 +35,7 @@
       boot.extraModulePackages = [ ];
       boot.kernelParams = [
         "split_lock_mitigate=0"
+        "amdgpu.vm_update_mode=3"
       ];
       boot.kernel.sysctl = {
         "vm.max_map_count" = 2147483642;

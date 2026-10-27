@@ -5,10 +5,10 @@
       defaults = {
         email = "me@thestachelfisch.dev";
         dnsProvider = "cloudflare";
-        environmentFile = config.sops.secrets."cloudflare/dns_api_token".path;
+        environmentFile = config.sops.secrets."cloudflare_credentials/dns_api_token".path;
       };
     };
 
-    sops.secrets."cloudflare/dns_api_token" = { };
+    sops.secrets."cloudflare_credentials/dns_api_token" = { };
   };
 }

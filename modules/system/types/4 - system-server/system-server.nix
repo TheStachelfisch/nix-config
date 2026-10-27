@@ -30,7 +30,7 @@
       services.nginx = {
         recommendedTlsSettings = true;
         recommendedGzipSettings = true;
-        recommendedOptimisations = true;
+        recommendedOptimisation = true;
         recommendedProxySettings = true;
         recommendedUwsgiSettings = true;
         recommendedBrotliSettings = true;
