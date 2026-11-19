@@ -49,6 +49,7 @@
           moonlight-qt
 
           prismlauncher
+          unityhub
         ];
 
         # fonts.fontconfig = {
