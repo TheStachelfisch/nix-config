@@ -5,6 +5,7 @@
 {
   flake.modules.nixos.system-server =
     {
+      pkgs,
       lib,
       ...
     }:
@@ -19,13 +20,17 @@
       boot.tmp.cleanOnBoot = true;
 
       # Not strictly required on servers. Removes ~300MiB
-      nix.registry = lib.mkForce { };
-      nix.settings.flake-registry = "";
+      # nix.registry = lib.mkForce { };
+      # nix.settings.flake-registry = "";
       documentation.nixos.enable = false;
 
       environment.enableAllTerminfo = true;
 
       security.sudo.wheelNeedsPassword = false;
+
+      environment.systemPackages = [
+        pkgs.unstable.dix
+      ];
 
       services.nginx = {
         recommendedTlsSettings = true;
