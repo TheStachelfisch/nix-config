@@ -19,6 +19,7 @@
 
       programs.nushell = {
         enable = true;
+        loadSessionVariables = true;
         settings = {
           show_banner = false;
           use_kitty_protocol = true;
@@ -49,10 +50,10 @@
           /* nu */ ''
             source ${carapaceNuConfig} # Provides $carapace_completer
 
-            let external_completers = {|spans|
-              match $spans.0 {
+            let external_completers = {|place|
+              match $place.command.0 {
                 _ => $carapace_completer
-              } | do $in $spans
+              } | do $in $place.command
             }
 
             $env.config.completions.external.completer = $external_completers
