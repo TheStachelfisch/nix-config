@@ -4,13 +4,23 @@
 }:
 {
   flake.modules.nixos.system-minimal =
-    { lib, ... }:
+    {
+      pkgs,
+      config,
+      ...
+    }:
     {
       nixpkgs = {
         config.allowUnfree = true;
         overlays = [
           inputs.nur.overlays.default
           # Unstable overlay is specified in the mkNixos function
+          (_final: _prev: {
+            unstable-small = import inputs.nixpkgs-unstable-small {
+              system = pkgs.stdenv.hostPlatform.system;
+              config = config.nixpkgs.config;
+            };
+          })
         ];
       };
       system.stateVersion = "26.05";
